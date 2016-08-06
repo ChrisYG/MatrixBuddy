@@ -120,6 +120,7 @@ func multRow (row:[Fraction], constant:Fraction) -> [Fraction]{
 }
 
 
+
 //replace one row with the sum of that row and a multiple of another row
 func addMultRow(row1:[Fraction], row2:[Fraction], constant:Fraction) -> [Fraction]{
     var result:[Fraction] = []

@@ -170,6 +170,7 @@ public func -=<Number: IntegerType>(inout lhs: Fractional<Number>, rhs: Fraction
     lhs = lhs - rhs
 }
 
+
 /// Multiply `lhs` and `rhs`, returning a reduced result.
 public func *<Number: IntegerType>(lhs: Fractional<Number>, rhs: Fractional<Number>) -> Fractional<Number> {
     let swapped = (Fractional(numerator: lhs.numerator, denominator: rhs.denominator), Fractional(numerator: rhs.numerator, denominator: lhs.denominator))
