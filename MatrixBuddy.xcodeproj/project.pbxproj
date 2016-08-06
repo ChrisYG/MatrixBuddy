@@ -14,6 +14,7 @@
 		F94BCFAC1D55A5FE00ABABC6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F94BCFAA1D55A5FE00ABABC6 /* LaunchScreen.storyboard */; };
 		F94BCFB71D55A5FF00ABABC6 /* MatrixBuddyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F94BCFB61D55A5FF00ABABC6 /* MatrixBuddyTests.swift */; };
 		F94BCFC21D55A5FF00ABABC6 /* MatrixBuddyUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F94BCFC11D55A5FF00ABABC6 /* MatrixBuddyUITests.swift */; };
+		F94BCFD01D55A74A00ABABC6 /* Fraction.swift in Sources */ = {isa = PBXBuildFile; fileRef = F94BCFCF1D55A74A00ABABC6 /* Fraction.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,6 +48,7 @@
 		F94BCFBD1D55A5FF00ABABC6 /* MatrixBuddyUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MatrixBuddyUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		F94BCFC11D55A5FF00ABABC6 /* MatrixBuddyUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatrixBuddyUITests.swift; sourceTree = "<group>"; };
 		F94BCFC31D55A5FF00ABABC6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F94BCFCF1D55A74A00ABABC6 /* Fraction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Fraction.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,6 +101,7 @@
 			children = (
 				F94BCFA11D55A5FE00ABABC6 /* AppDelegate.swift */,
 				F94BCFA31D55A5FE00ABABC6 /* ViewController.swift */,
+				F94BCFCF1D55A74A00ABABC6 /* Fraction.swift */,
 				F94BCFA51D55A5FE00ABABC6 /* Main.storyboard */,
 				F94BCFA81D55A5FE00ABABC6 /* Assets.xcassets */,
 				F94BCFAA1D55A5FE00ABABC6 /* LaunchScreen.storyboard */,
@@ -256,6 +259,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F94BCFD01D55A74A00ABABC6 /* Fraction.swift in Sources */,
 				F94BCFA41D55A5FE00ABABC6 /* ViewController.swift in Sources */,
 				F94BCFA21D55A5FE00ABABC6 /* AppDelegate.swift in Sources */,
 			);
