@@ -196,6 +196,7 @@
 				TargetAttributes = {
 					F94BCF9D1D55A5FE00ABABC6 = {
 						CreatedOnToolsVersion = 7.3.1;
+						DevelopmentTeam = PJHL2KMH77;
 					};
 					F94BCFB11D55A5FF00ABABC6 = {
 						CreatedOnToolsVersion = 7.3.1;
@@ -405,10 +406,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = MatrixBuddy/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = edu.cmc.MatrixBuddy;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Debug;
 		};
@@ -416,10 +420,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = MatrixBuddy/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = edu.cmc.MatrixBuddy;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Release;
 		};
@@ -488,6 +495,7 @@
 				F94BCFC81D55A5FF00ABABC6 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		F94BCFC91D55A5FF00ABABC6 /* Build configuration list for PBXNativeTarget "MatrixBuddyTests" */ = {
 			isa = XCConfigurationList;
@@ -496,6 +504,7 @@
 				F94BCFCB1D55A5FF00ABABC6 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		F94BCFCC1D55A5FF00ABABC6 /* Build configuration list for PBXNativeTarget "MatrixBuddyUITests" */ = {
 			isa = XCConfigurationList;
@@ -504,6 +513,7 @@
 				F94BCFCE1D55A5FF00ABABC6 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
