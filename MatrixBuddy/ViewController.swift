@@ -44,6 +44,11 @@ func equalFractionMatrix(matrix1:[[Fraction]], matrix2:[[Fraction]]) -> Bool {
     }
 }
 
+//0.1 Fraction convert to number
+func fractionToNumber(input:Fraction) -> Double {
+    return Double(input.numerator)/Double(input.denominator)
+}
+
 //0.5 Reduce entries
 func reduceEntry(matrix:[[Fraction]]) -> [[Fraction]] {
     var result:[[Fraction]] = matrix
@@ -57,7 +62,7 @@ func reduceEntry(matrix:[[Fraction]]) -> [[Fraction]] {
 }
 
 //0.6 Convert fraction matrix to decimal matrix
-func toDecimal(matrix:[[Fraction]]) -> [[Double]] {
+func toDecimalMatrix(matrix:[[Fraction]]) -> [[Double]] {
     var result:[[Double]] = []
     var temp:[Double] = []
     var holder:Double = 0

@@ -15,6 +15,8 @@
 		F94BCFB71D55A5FF00ABABC6 /* MatrixBuddyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F94BCFB61D55A5FF00ABABC6 /* MatrixBuddyTests.swift */; };
 		F94BCFC21D55A5FF00ABABC6 /* MatrixBuddyUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F94BCFC11D55A5FF00ABABC6 /* MatrixBuddyUITests.swift */; };
 		F94BCFD01D55A74A00ABABC6 /* Fraction.swift in Sources */ = {isa = PBXBuildFile; fileRef = F94BCFCF1D55A74A00ABABC6 /* Fraction.swift */; };
+		F9F4B2FE1D5C39E000838DF5 /* Computation.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9F4B2FD1D5C39E000838DF5 /* Computation.swift */; };
+		F9F4B2FF1D5C39E000838DF5 /* Computation.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9F4B2FD1D5C39E000838DF5 /* Computation.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +51,7 @@
 		F94BCFC11D55A5FF00ABABC6 /* MatrixBuddyUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatrixBuddyUITests.swift; sourceTree = "<group>"; };
 		F94BCFC31D55A5FF00ABABC6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F94BCFCF1D55A74A00ABABC6 /* Fraction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Fraction.swift; sourceTree = "<group>"; };
+		F9F4B2FD1D5C39E000838DF5 /* Computation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Computation.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -106,6 +109,7 @@
 				F94BCFA81D55A5FE00ABABC6 /* Assets.xcassets */,
 				F94BCFAA1D55A5FE00ABABC6 /* LaunchScreen.storyboard */,
 				F94BCFAD1D55A5FE00ABABC6 /* Info.plist */,
+				F9F4B2FD1D5C39E000838DF5 /* Computation.swift */,
 			);
 			path = MatrixBuddy;
 			sourceTree = "<group>";
@@ -263,6 +267,7 @@
 				F94BCFD01D55A74A00ABABC6 /* Fraction.swift in Sources */,
 				F94BCFA41D55A5FE00ABABC6 /* ViewController.swift in Sources */,
 				F94BCFA21D55A5FE00ABABC6 /* AppDelegate.swift in Sources */,
+				F9F4B2FE1D5C39E000838DF5 /* Computation.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -271,6 +276,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F94BCFB71D55A5FF00ABABC6 /* MatrixBuddyTests.swift in Sources */,
+				F9F4B2FF1D5C39E000838DF5 /* Computation.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
