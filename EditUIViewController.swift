@@ -10,7 +10,8 @@ import UIKit
 
 class EditUIViewController: UIViewController {
     
-    var computation:Computation?
+    var computation = Computation(headOperation: nil, middleOperation: nil, firstMatrix: [["0","0","0"],["0","0","0"],["0","0","0"]],secondMatrix: [], matrixResult: nil, numberResult: nil)
+
     var cursor:EditCursor = EditCursor(inMatrixOne: true, verticalIndex: 0, horizontalIndex: 0)
     
     //Row and Col labels and steppers reference
@@ -44,11 +45,11 @@ class EditUIViewController: UIViewController {
     
     @IBAction func cursorDown(sender: UIButton) {
         if cursor.inMatrixOne == true {
-            if cursor.verticalIndex < (computation?.firstMatrix.count)! - 1 {
+            if cursor.verticalIndex < (computation.firstMatrix.count) - 1 {
                 cursor.moveDown()
             }
         } else {
-            if cursor.verticalIndex < (computation?.secondMatrix!.count)! - 1 {
+            if cursor.verticalIndex < (computation.secondMatrix!.count) - 1 {
                 cursor.moveDown()
             }
         }
@@ -62,7 +63,7 @@ class EditUIViewController: UIViewController {
         } else {
             if cursor.horizontalIndex > 0 {
                 cursor.moveLeft()
-            } else if cursor.verticalIndex <= (computation?.firstMatrix.count)! - 1 {
+            } else if cursor.verticalIndex <= (computation.firstMatrix.count) - 1 {
                 cursor.moveToFirstMatrix()
             }
         }
@@ -72,11 +73,11 @@ class EditUIViewController: UIViewController {
     @IBAction func cursorRight(sender: UIButton) {
         if cursor.inMatrixOne == false {
             cursor.moveRight()
-        } else {
-            if cursor.horizontalIndex < (computation?.firstMatrix[0].count)! - 1 {
+        } else if computation.secondMatrix != nil {
+            if cursor.horizontalIndex < (computation.firstMatrix[0].count) - 1 {
                 cursor.moveRight()
-            } else if cursor.horizontalIndex == (computation?.firstMatrix[0].count)! - 1 {
-                if cursor.verticalIndex <= (computation?.secondMatrix!.count)! - 1 {
+            } else if cursor.horizontalIndex == (computation.firstMatrix[0].count) - 1 {
+                if cursor.verticalIndex <= (computation.secondMatrix!.count) - 1 {
                     cursor.moveToSecondMatirx()
                 }
             }
@@ -84,11 +85,9 @@ class EditUIViewController: UIViewController {
 
     }
 
-
-    
     //Reset button
     @IBAction func resetBoard(sender: UIButton) {
-        computation?.firstMatrix = [
+        computation.firstMatrix = [
             ["0","0","0"],
             ["0","0","0"],
             ["0","0","0"]
@@ -98,8 +97,8 @@ class EditUIViewController: UIViewController {
         matrixOneColStepper.value = 3
         matrixOneRowStepper.value = 3
         
-        if computation?.secondMatrix != nil {
-            computation?.secondMatrix = [
+        if computation.secondMatrix != nil {
+            computation.secondMatrix = [
                 ["0","0","0"],
                 ["0","0","0"],
                 ["0","0","0"]
@@ -125,5 +124,263 @@ class EditUIViewController: UIViewController {
     @IBAction func changeMatrixTwoCol(sender: UIStepper) {
         matrixTwoColLabel.text = "Col " + String(Int(matrixTwoColStepper.value))
     }
+    
+    //0-9 number buttons
+    @IBAction func pressZero(sender: UIButton) {
+        if cursor.inMatrixOne == true {
+            if computation.firstMatrix[cursor.verticalIndex][cursor.horizontalIndex] != "0" && (!(computation.firstMatrix[cursor.verticalIndex][cursor.horizontalIndex].hasSuffix("/"))){
+                computation.firstMatrix[cursor.verticalIndex][cursor.horizontalIndex] += "0"
+            }
+        } else {
+            if computation.secondMatrix![cursor.verticalIndex][cursor.horizontalIndex] != "0" && (!(computation.secondMatrix![cursor.verticalIndex][cursor.horizontalIndex].hasSuffix("/"))){
+                computation.secondMatrix![cursor.verticalIndex][cursor.horizontalIndex] += "0"
+            }
+        }
+    }
+    @IBAction func pressOne(sender: UIButton) {
+        if cursor.inMatrixOne == true {
+            if computation.firstMatrix[cursor.verticalIndex][cursor.horizontalIndex] == "0" {
+                computation.firstMatrix[cursor.verticalIndex][cursor.horizontalIndex] = "1"
+            } else {
+                computation.firstMatrix[cursor.verticalIndex][cursor.horizontalIndex] += "1"
+            }
+        } else {
+            if computation.secondMatrix![cursor.verticalIndex][cursor.horizontalIndex] == "0" {
+                computation.secondMatrix![cursor.verticalIndex][cursor.horizontalIndex] = "1"
+            } else {
+                computation.secondMatrix![cursor.verticalIndex][cursor.horizontalIndex] += "1"
+            }
+        }
+    }
+    @IBAction func pressTwo(sender: UIButton) {
+        if cursor.inMatrixOne == true {
+            if computation.firstMatrix[cursor.verticalIndex][cursor.horizontalIndex] == "0" {
+                computation.firstMatrix[cursor.verticalIndex][cursor.horizontalIndex] = "2"
+            } else {
+                computation.firstMatrix[cursor.verticalIndex][cursor.horizontalIndex] += "2"
+            }
+        } else {
+            if computation.secondMatrix![cursor.verticalIndex][cursor.horizontalIndex] == "0" {
+                computation.secondMatrix![cursor.verticalIndex][cursor.horizontalIndex] = "2"
+            } else {
+                computation.secondMatrix![cursor.verticalIndex][cursor.horizontalIndex] += "2"
+            }
+        }
+    }
+    @IBAction func pressThree(sender: UIButton) {
+        if cursor.inMatrixOne == true {
+            if computation.firstMatrix[cursor.verticalIndex][cursor.horizontalIndex] == "0" {
+                computation.firstMatrix[cursor.verticalIndex][cursor.horizontalIndex] = "3"
+            } else {
+                computation.firstMatrix[cursor.verticalIndex][cursor.horizontalIndex] += "3"
+            }
+        } else {
+            if computation.secondMatrix![cursor.verticalIndex][cursor.horizontalIndex] == "0" {
+                computation.secondMatrix![cursor.verticalIndex][cursor.horizontalIndex] = "3"
+            } else {
+                computation.secondMatrix![cursor.verticalIndex][cursor.horizontalIndex] += "3"
+            }
+        }
+    }
+    @IBAction func pressFour(sender: UIButton) {
+        if cursor.inMatrixOne == true {
+            if computation.firstMatrix[cursor.verticalIndex][cursor.horizontalIndex] == "0" {
+                computation.firstMatrix[cursor.verticalIndex][cursor.horizontalIndex] = "4"
+            } else {
+                computation.firstMatrix[cursor.verticalIndex][cursor.horizontalIndex] += "4"
+            }
+        } else {
+            if computation.secondMatrix![cursor.verticalIndex][cursor.horizontalIndex] == "0" {
+                computation.secondMatrix![cursor.verticalIndex][cursor.horizontalIndex] = "4"
+            } else {
+                computation.secondMatrix![cursor.verticalIndex][cursor.horizontalIndex] += "4"
+            }
+        }
+    }
+    @IBAction func pressFive(sender: UIButton) {
+        if cursor.inMatrixOne == true {
+            if computation.firstMatrix[cursor.verticalIndex][cursor.horizontalIndex] == "0" {
+                computation.firstMatrix[cursor.verticalIndex][cursor.horizontalIndex] = "5"
+            } else {
+                computation.firstMatrix[cursor.verticalIndex][cursor.horizontalIndex] += "5"
+            }
+        } else {
+            if computation.secondMatrix![cursor.verticalIndex][cursor.horizontalIndex] == "0" {
+                computation.secondMatrix![cursor.verticalIndex][cursor.horizontalIndex] = "5"
+            } else {
+                computation.secondMatrix![cursor.verticalIndex][cursor.horizontalIndex] += "5"
+            }
+        }
+    }
+    @IBAction func pressSix(sender: UIButton) {
+        if cursor.inMatrixOne == true {
+            if computation.firstMatrix[cursor.verticalIndex][cursor.horizontalIndex] == "0" {
+                computation.firstMatrix[cursor.verticalIndex][cursor.horizontalIndex] = "6"
+            } else {
+                computation.firstMatrix[cursor.verticalIndex][cursor.horizontalIndex] += "6"
+            }
+        } else {
+            if computation.secondMatrix![cursor.verticalIndex][cursor.horizontalIndex] == "0" {
+                computation.secondMatrix![cursor.verticalIndex][cursor.horizontalIndex] = "6"
+            } else {
+                computation.secondMatrix![cursor.verticalIndex][cursor.horizontalIndex] += "6"
+            }
+        }
+    }
+    @IBAction func pressSeven(sender: UIButton) {
+        if cursor.inMatrixOne == true {
+            if computation.firstMatrix[cursor.verticalIndex][cursor.horizontalIndex] == "0" {
+                computation.firstMatrix[cursor.verticalIndex][cursor.horizontalIndex] = "7"
+            } else {
+                computation.firstMatrix[cursor.verticalIndex][cursor.horizontalIndex] += "7"
+            }
+        } else {
+            if computation.secondMatrix![cursor.verticalIndex][cursor.horizontalIndex] == "0" {
+                computation.secondMatrix![cursor.verticalIndex][cursor.horizontalIndex] = "7"
+            } else {
+                computation.secondMatrix![cursor.verticalIndex][cursor.horizontalIndex] += "7"
+            }
+        }
+    }
+    @IBAction func pressEight(sender: UIButton) {
+        if cursor.inMatrixOne == true {
+            if computation.firstMatrix[cursor.verticalIndex][cursor.horizontalIndex] == "0" {
+                computation.firstMatrix[cursor.verticalIndex][cursor.horizontalIndex] = "8"
+            } else {
+                computation.firstMatrix[cursor.verticalIndex][cursor.horizontalIndex] += "8"
+            }
+        } else {
+            if computation.secondMatrix![cursor.verticalIndex][cursor.horizontalIndex] == "0" {
+                computation.secondMatrix![cursor.verticalIndex][cursor.horizontalIndex] = "8"
+            } else {
+                computation.secondMatrix![cursor.verticalIndex][cursor.horizontalIndex] += "8"
+            }
+        }
+    }
+    @IBAction func pressNine(sender: UIButton) {
+        if cursor.inMatrixOne == true {
+            if computation.firstMatrix[cursor.verticalIndex][cursor.horizontalIndex] == "0" {
+                computation.firstMatrix[cursor.verticalIndex][cursor.horizontalIndex] = "9"
+            } else {
+                computation.firstMatrix[cursor.verticalIndex][cursor.horizontalIndex] += "9"
+            }
+        } else {
+            if computation.secondMatrix![cursor.verticalIndex][cursor.horizontalIndex] == "0" {
+                computation.secondMatrix![cursor.verticalIndex][cursor.horizontalIndex] = "9"
+            } else {
+                computation.secondMatrix![cursor.verticalIndex][cursor.horizontalIndex] += "9"
+            }
+        }
+    }
+    
+    //negative sign button
+    @IBAction func pressNegative(sender: UIButton) {
+        if cursor.inMatrixOne == true {
+            let target = computation.firstMatrix[cursor.verticalIndex][cursor.horizontalIndex]
+            if target == "0" {
+                computation.firstMatrix[cursor.verticalIndex][cursor.horizontalIndex] = "-"
+            } else {
+                if target.characters.contains("-") {
+                    computation.firstMatrix[cursor.verticalIndex][cursor.horizontalIndex] = target.substringFromIndex(target.startIndex.advancedBy(1))
+                } else {
+                    computation.firstMatrix[cursor.verticalIndex][cursor.horizontalIndex] = "-" + target
+                }
+            }
+        } else {
+            let target = computation.secondMatrix![cursor.verticalIndex][cursor.horizontalIndex]
+            if target == "0" {
+                computation.secondMatrix![cursor.verticalIndex][cursor.horizontalIndex] = "-"
+            } else {
+                if target.characters.contains("-") {
+                    computation.secondMatrix![cursor.verticalIndex][cursor.horizontalIndex] = target.substringFromIndex(target.startIndex.advancedBy(1))
+                } else {
+                    computation.secondMatrix![cursor.verticalIndex][cursor.horizontalIndex] = "-" + target
+                }
+            }
+
+        }
+    }
+    
+    //decimal sign button
+    @IBAction func pressDecimal(sender: UIButton) {
+        if cursor.inMatrixOne == true {
+            let target = computation.firstMatrix[cursor.verticalIndex][cursor.horizontalIndex]
+            if !(target.characters.contains("/") || target.characters.contains(".")){
+                computation.firstMatrix[cursor.verticalIndex][cursor.horizontalIndex] +=  "."
+            }
+        } else {
+            let target = computation.secondMatrix![cursor.verticalIndex][cursor.horizontalIndex]
+            if !(target.characters.contains("/") || target.characters.contains(".")){
+                computation.secondMatrix![cursor.verticalIndex][cursor.horizontalIndex] += "."
+            }
+        }
+    }
+    
+    //fraction sign button
+    @IBAction func pressFractionSign(sender: UIButton) {
+        if cursor.inMatrixOne == true {
+            let target = computation.firstMatrix[cursor.verticalIndex][cursor.horizontalIndex]
+            if !(target == "0" || target.characters.contains("/") || target.characters.contains(".")) {
+                computation.firstMatrix[cursor.verticalIndex][cursor.horizontalIndex] += "/"
+            }
+        } else {
+            let target = computation.secondMatrix![cursor.verticalIndex][cursor.horizontalIndex]
+            if !(target == "0" || target.characters.contains("/") || target.characters.contains(".")) {
+                computation.secondMatrix![cursor.verticalIndex][cursor.horizontalIndex] += "/"
+            }
+        }
+    }
+    
+    //delete button
+    @IBAction func pressDelete(sender: UIButton) {
+        if cursor.inMatrixOne == true {
+            let target = computation.firstMatrix[cursor.verticalIndex][cursor.horizontalIndex]
+            if target.characters.count > 1{
+                computation.firstMatrix[cursor.verticalIndex][cursor.horizontalIndex] =
+                target.substringToIndex(target.endIndex.advancedBy(-1))
+            } else if target != "0" {
+                computation.firstMatrix[cursor.verticalIndex][cursor.horizontalIndex] = "0"
+            }
+        } else {
+            let target = computation.secondMatrix![cursor.verticalIndex][cursor.horizontalIndex]
+            if target.characters.count > 1{
+                computation.secondMatrix![cursor.verticalIndex][cursor.horizontalIndex] =
+                    target.substringToIndex(target.endIndex.advancedBy(-1))
+            } else if target != "0" {
+                computation.secondMatrix![cursor.verticalIndex][cursor.horizontalIndex] = "0"
+            }
+        }
+    }
+    
 
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

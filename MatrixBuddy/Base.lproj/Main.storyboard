@@ -285,10 +285,10 @@
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Row: 3" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OE8-uc-fUE">
                                         <rect key="frame" x="0.0" y="0.0" width="145" height="30"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="3" maximumValue="5" translatesAutoresizingMaskIntoConstraints="NO" id="8SK-ir-5aO">
+                                    <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="3" minimumValue="1" maximumValue="5" translatesAutoresizingMaskIntoConstraints="NO" id="8SK-ir-5aO">
                                         <rect key="frame" x="145" y="0.0" width="94" height="29"/>
                                         <connections>
                                             <action selector="changeMatrixOneRow:" destination="ZYY-iX-pvF" eventType="valueChanged" id="Eah-vL-UMD"/>
@@ -297,7 +297,7 @@
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Row: 3" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sFa-pu-i4o">
                                         <rect key="frame" x="290" y="0.0" width="145" height="30"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="3" maximumValue="5" translatesAutoresizingMaskIntoConstraints="NO" id="b56-2t-Lzg">
@@ -339,10 +339,10 @@
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Col: 3" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HhX-7u-3FN">
                                         <rect key="frame" x="0.0" y="0.0" width="145" height="30"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="3" maximumValue="5" translatesAutoresizingMaskIntoConstraints="NO" id="2GX-k3-UQZ">
+                                    <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="3" minimumValue="1" maximumValue="5" translatesAutoresizingMaskIntoConstraints="NO" id="2GX-k3-UQZ">
                                         <rect key="frame" x="145" y="0.0" width="94" height="29"/>
                                         <connections>
                                             <action selector="changeMatrixOneCol:" destination="ZYY-iX-pvF" eventType="valueChanged" id="jxP-T5-B3m"/>
@@ -351,7 +351,7 @@
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Col: 3   " textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bvu-42-98w">
                                         <rect key="frame" x="290" y="0.0" width="145" height="30"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="3" maximumValue="5" translatesAutoresizingMaskIntoConstraints="NO" id="QXg-lF-EH3">
@@ -395,16 +395,25 @@
                                                 <rect key="frame" x="0.0" y="0.0" width="60" height="81"/>
                                                 <color key="backgroundColor" red="0.3002739625353068" green="1" blue="0.36377935457654009" alpha="1" colorSpace="calibratedRGB"/>
                                                 <state key="normal" title="7"/>
+                                                <connections>
+                                                    <action selector="pressSeven:" destination="ZYY-iX-pvF" eventType="touchUpInside" id="Peu-10-nnf"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zjU-9b-Dhl">
                                                 <rect key="frame" x="60" y="0.0" width="60" height="81"/>
                                                 <color key="backgroundColor" red="1" green="0.65422877982687055" blue="0.97446442619679641" alpha="1" colorSpace="calibratedRGB"/>
                                                 <state key="normal" title="8"/>
+                                                <connections>
+                                                    <action selector="pressEight:" destination="ZYY-iX-pvF" eventType="touchUpInside" id="EDB-hU-lP1"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="16T-GW-FD2">
                                                 <rect key="frame" x="120" y="0.0" width="60" height="81"/>
                                                 <color key="backgroundColor" red="1" green="0.26607131781044813" blue="0.31482256795017227" alpha="1" colorSpace="calibratedRGB"/>
                                                 <state key="normal" title="9"/>
+                                                <connections>
+                                                    <action selector="pressNine:" destination="ZYY-iX-pvF" eventType="touchUpInside" id="ZSq-eb-qev"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                         <constraints>
@@ -434,14 +443,23 @@
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WD9-fe-rz3">
                                                 <rect key="frame" x="0.0" y="0.0" width="60" height="81"/>
                                                 <state key="normal" title="4"/>
+                                                <connections>
+                                                    <action selector="pressFour:" destination="ZYY-iX-pvF" eventType="touchUpInside" id="doc-LT-XiF"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="E7c-EC-mxl">
                                                 <rect key="frame" x="60" y="0.0" width="60" height="81"/>
                                                 <state key="normal" title="5"/>
+                                                <connections>
+                                                    <action selector="pressFive:" destination="ZYY-iX-pvF" eventType="touchUpInside" id="rNK-Fu-9Sh"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="euh-S1-gLS">
                                                 <rect key="frame" x="120" y="0.0" width="60" height="81"/>
                                                 <state key="normal" title="6"/>
+                                                <connections>
+                                                    <action selector="pressSix:" destination="ZYY-iX-pvF" eventType="touchUpInside" id="iae-BE-ma3"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                         <constraints>
@@ -469,14 +487,23 @@
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BWX-CA-dGa">
                                                 <rect key="frame" x="0.0" y="0.0" width="60" height="81"/>
                                                 <state key="normal" title="1"/>
+                                                <connections>
+                                                    <action selector="pressOne:" destination="ZYY-iX-pvF" eventType="touchUpInside" id="2kv-Uf-FTV"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hML-ak-8ja">
                                                 <rect key="frame" x="60" y="0.0" width="60" height="81"/>
                                                 <state key="normal" title="2"/>
+                                                <connections>
+                                                    <action selector="pressTwo:" destination="ZYY-iX-pvF" eventType="touchUpInside" id="Osa-8Y-xe2"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="M1b-8v-5IT">
                                                 <rect key="frame" x="120" y="0.0" width="60" height="81"/>
                                                 <state key="normal" title="3"/>
+                                                <connections>
+                                                    <action selector="pressThree:" destination="ZYY-iX-pvF" eventType="touchUpInside" id="OuP-Dc-qbd"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                         <constraints>
@@ -505,10 +532,16 @@
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Onl-9E-WOH">
                                                 <rect key="frame" x="0.0" y="0.0" width="120" height="81"/>
                                                 <state key="normal" title="0"/>
+                                                <connections>
+                                                    <action selector="pressZero:" destination="ZYY-iX-pvF" eventType="touchUpInside" id="B4B-7I-wI8"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NyS-eB-g0k">
                                                 <rect key="frame" x="120" y="0.0" width="60" height="81"/>
                                                 <state key="normal" title="."/>
+                                                <connections>
+                                                    <action selector="pressDecimal:" destination="ZYY-iX-pvF" eventType="touchUpInside" id="S0h-oO-JWc"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                         <constraints>
@@ -545,10 +578,16 @@
                                         <state key="normal" title="/">
                                             <color key="titleShadowColor" red="0.0" green="0.45098039220000002" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         </state>
+                                        <connections>
+                                            <action selector="pressFractionSign:" destination="ZYY-iX-pvF" eventType="touchUpInside" id="B5j-EE-aNu"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cfG-Yb-3IJ">
                                         <rect key="frame" x="0.0" y="162" width="60" height="162"/>
                                         <state key="normal" title="-"/>
+                                        <connections>
+                                            <action selector="pressNegative:" destination="ZYY-iX-pvF" eventType="touchUpInside" id="RlH-4S-e1q"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <constraints>
@@ -582,6 +621,9 @@
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aGd-wS-6QI">
                                         <rect key="frame" x="0.0" y="81" width="362" height="81"/>
                                         <state key="normal" title="Delete"/>
+                                        <connections>
+                                            <action selector="pressDelete:" destination="ZYY-iX-pvF" eventType="touchUpInside" id="JHE-LN-oUg"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <constraints>
