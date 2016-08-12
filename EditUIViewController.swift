@@ -128,11 +128,13 @@ class EditUIViewController: UIViewController {
     //0-9 number buttons
     @IBAction func pressZero(sender: UIButton) {
         if cursor.inMatrixOne == true {
-            if computation.firstMatrix[cursor.verticalIndex][cursor.horizontalIndex] != "0" && (!(computation.firstMatrix[cursor.verticalIndex][cursor.horizontalIndex].hasSuffix("/"))){
+            let target = computation.firstMatrix[cursor.verticalIndex][cursor.horizontalIndex]
+            if target != "0" && (!(target.hasSuffix("/"))){
                 computation.firstMatrix[cursor.verticalIndex][cursor.horizontalIndex] += "0"
             }
         } else {
-            if computation.secondMatrix![cursor.verticalIndex][cursor.horizontalIndex] != "0" && (!(computation.secondMatrix![cursor.verticalIndex][cursor.horizontalIndex].hasSuffix("/"))){
+            let target = computation.secondMatrix![cursor.verticalIndex][cursor.horizontalIndex]
+            if target != "0" && (!(target.hasSuffix("/"))){
                 computation.secondMatrix![cursor.verticalIndex][cursor.horizontalIndex] += "0"
             }
         }
