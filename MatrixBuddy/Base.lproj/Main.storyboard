@@ -270,7 +270,7 @@
         <!--Editing Mode-->
         <scene sceneID="sVK-4d-eWS">
             <objects>
-                <viewController id="ZYY-iX-pvF" sceneMemberID="viewController">
+                <viewController id="ZYY-iX-pvF" customClass="EditUIViewController" customModule="MatrixBuddy" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="PVe-Ng-FbZ"/>
                         <viewControllerLayoutGuide type="bottom" id="mIq-3i-S07"/>
@@ -290,6 +290,9 @@
                                     </label>
                                     <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="3" maximumValue="5" translatesAutoresizingMaskIntoConstraints="NO" id="8SK-ir-5aO">
                                         <rect key="frame" x="145" y="0.0" width="94" height="29"/>
+                                        <connections>
+                                            <action selector="changeMatrixOneRow:" destination="ZYY-iX-pvF" eventType="valueChanged" id="Eah-vL-UMD"/>
+                                        </connections>
                                     </stepper>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Row: 3" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sFa-pu-i4o">
                                         <rect key="frame" x="290" y="0.0" width="145" height="30"/>
@@ -299,6 +302,9 @@
                                     </label>
                                     <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="3" maximumValue="5" translatesAutoresizingMaskIntoConstraints="NO" id="b56-2t-Lzg">
                                         <rect key="frame" x="435" y="0.0" width="94" height="29"/>
+                                        <connections>
+                                            <action selector="changeMatrixTwoRow:" destination="ZYY-iX-pvF" eventType="valueChanged" id="1Wk-Yg-4SY"/>
+                                        </connections>
                                     </stepper>
                                 </subviews>
                                 <constraints>
@@ -338,6 +344,9 @@
                                     </label>
                                     <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="3" maximumValue="5" translatesAutoresizingMaskIntoConstraints="NO" id="2GX-k3-UQZ">
                                         <rect key="frame" x="145" y="0.0" width="94" height="29"/>
+                                        <connections>
+                                            <action selector="changeMatrixOneCol:" destination="ZYY-iX-pvF" eventType="valueChanged" id="jxP-T5-B3m"/>
+                                        </connections>
                                     </stepper>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Col: 3   " textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bvu-42-98w">
                                         <rect key="frame" x="290" y="0.0" width="145" height="30"/>
@@ -347,6 +356,9 @@
                                     </label>
                                     <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="3" maximumValue="5" translatesAutoresizingMaskIntoConstraints="NO" id="QXg-lF-EH3">
                                         <rect key="frame" x="435" y="0.0" width="94" height="29"/>
+                                        <connections>
+                                            <action selector="changeMatrixTwoCol:" destination="ZYY-iX-pvF" eventType="valueChanged" id="nOe-es-gAP"/>
+                                        </connections>
                                     </stepper>
                                 </subviews>
                                 <constraints>
@@ -563,6 +575,9 @@
                                         <rect key="frame" x="0.0" y="0.0" width="362" height="81"/>
                                         <color key="backgroundColor" red="0.13241202683552422" green="0.73705407181507043" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         <state key="normal" title="Reset"/>
+                                        <connections>
+                                            <action selector="resetBoard:" destination="ZYY-iX-pvF" eventType="touchUpInside" id="g5s-dD-IxH"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aGd-wS-6QI">
                                         <rect key="frame" x="0.0" y="81" width="362" height="81"/>
@@ -588,6 +603,9 @@
                                         <rect key="frame" x="121" y="0.0" width="121" height="54.5"/>
                                         <color key="backgroundColor" red="1" green="0.81911617170378492" blue="0.21936393059417092" alpha="1" colorSpace="calibratedRGB"/>
                                         <state key="normal" title="Up"/>
+                                        <connections>
+                                            <action selector="cursorUp:" destination="ZYY-iX-pvF" eventType="touchUpInside" id="6Pd-gC-kgP"/>
+                                        </connections>
                                     </button>
                                     <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ib0-L2-C8R">
                                         <rect key="frame" x="0.0" y="53" width="364" height="54.5"/>
@@ -596,6 +614,9 @@
                                                 <rect key="frame" x="0.0" y="0.0" width="121" height="54.5"/>
                                                 <color key="backgroundColor" red="1" green="0.71032782527978999" blue="0.35871526762119932" alpha="1" colorSpace="calibratedRGB"/>
                                                 <state key="normal" title="Left"/>
+                                                <connections>
+                                                    <action selector="cursorLeft:" destination="ZYY-iX-pvF" eventType="touchUpInside" id="TAu-9F-Drr"/>
+                                                </connections>
                                             </button>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4YE-aX-176">
                                                 <rect key="frame" x="121" y="0.0" width="121" height="54.5"/>
@@ -605,6 +626,9 @@
                                                 <rect key="frame" x="242" y="0.0" width="122" height="54.5"/>
                                                 <color key="backgroundColor" red="1" green="0.60733414378140649" blue="0.96185023618227283" alpha="1" colorSpace="calibratedRGB"/>
                                                 <state key="normal" title="Right"/>
+                                                <connections>
+                                                    <action selector="cursorRight:" destination="ZYY-iX-pvF" eventType="touchUpInside" id="qOh-TU-z3m"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                         <constraints>
@@ -636,6 +660,9 @@
                                         <rect key="frame" x="120.5" y="107.5" width="122" height="54.5"/>
                                         <color key="backgroundColor" red="0.41489587647217263" green="0.10949898010236803" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         <state key="normal" title="Down"/>
+                                        <connections>
+                                            <action selector="cursorDown:" destination="ZYY-iX-pvF" eventType="touchUpInside" id="BIO-0x-UWY"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -710,6 +737,16 @@
                         <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="qDR-D5-Tgn"/>
                         <barButtonItem key="rightBarButtonItem" systemItem="save" id="KxV-ZI-khk"/>
                     </navigationItem>
+                    <connections>
+                        <outlet property="matrixOneColLabel" destination="HhX-7u-3FN" id="6Jh-W6-QbO"/>
+                        <outlet property="matrixOneColStepper" destination="2GX-k3-UQZ" id="uhC-EV-qbb"/>
+                        <outlet property="matrixOneRowLabel" destination="OE8-uc-fUE" id="yv6-oC-tSC"/>
+                        <outlet property="matrixOneRowStepper" destination="8SK-ir-5aO" id="NOE-aN-wBO"/>
+                        <outlet property="matrixTwoColLabel" destination="bvu-42-98w" id="bNj-TU-Ve2"/>
+                        <outlet property="matrixTwoColStepper" destination="QXg-lF-EH3" id="0cb-Vc-xJZ"/>
+                        <outlet property="matrixTwoRowLabel" destination="sFa-pu-i4o" id="A29-Ol-nu3"/>
+                        <outlet property="matrixTwoRowStepper" destination="b56-2t-Lzg" id="zNf-1G-dbx"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8qc-BQ-pPl" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

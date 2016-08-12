@@ -11,10 +11,7 @@ import Darwin
 
 
 class ViewController: UIViewController {
-    var kk:[[Fraction]] = [
-        [1,2,3],
-        [4,5,6]
-    ]
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.

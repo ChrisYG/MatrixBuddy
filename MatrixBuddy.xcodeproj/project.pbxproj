@@ -17,6 +17,10 @@
 		F94BCFD01D55A74A00ABABC6 /* Fraction.swift in Sources */ = {isa = PBXBuildFile; fileRef = F94BCFCF1D55A74A00ABABC6 /* Fraction.swift */; };
 		F9F4B2FE1D5C39E000838DF5 /* Computation.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9F4B2FD1D5C39E000838DF5 /* Computation.swift */; };
 		F9F4B2FF1D5C39E000838DF5 /* Computation.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9F4B2FD1D5C39E000838DF5 /* Computation.swift */; };
+		F9F4B3011D5D466800838DF5 /* EditCursor.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9F4B3001D5D466800838DF5 /* EditCursor.swift */; };
+		F9F4B3021D5D466800838DF5 /* EditCursor.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9F4B3001D5D466800838DF5 /* EditCursor.swift */; };
+		F9F4B3071D5D520800838DF5 /* EditUIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9F4B3061D5D520800838DF5 /* EditUIViewController.swift */; };
+		F9F4B3081D5D520800838DF5 /* EditUIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9F4B3061D5D520800838DF5 /* EditUIViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -52,6 +56,8 @@
 		F94BCFC31D55A5FF00ABABC6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F94BCFCF1D55A74A00ABABC6 /* Fraction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Fraction.swift; sourceTree = "<group>"; };
 		F9F4B2FD1D5C39E000838DF5 /* Computation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Computation.swift; sourceTree = "<group>"; };
+		F9F4B3001D5D466800838DF5 /* EditCursor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditCursor.swift; sourceTree = "<group>"; };
+		F9F4B3061D5D520800838DF5 /* EditUIViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EditUIViewController.swift; path = ../EditUIViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -110,6 +116,8 @@
 				F94BCFAA1D55A5FE00ABABC6 /* LaunchScreen.storyboard */,
 				F94BCFAD1D55A5FE00ABABC6 /* Info.plist */,
 				F9F4B2FD1D5C39E000838DF5 /* Computation.swift */,
+				F9F4B3001D5D466800838DF5 /* EditCursor.swift */,
+				F9F4B3061D5D520800838DF5 /* EditUIViewController.swift */,
 			);
 			path = MatrixBuddy;
 			sourceTree = "<group>";
@@ -264,6 +272,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F9F4B3071D5D520800838DF5 /* EditUIViewController.swift in Sources */,
+				F9F4B3011D5D466800838DF5 /* EditCursor.swift in Sources */,
 				F94BCFD01D55A74A00ABABC6 /* Fraction.swift in Sources */,
 				F94BCFA41D55A5FE00ABABC6 /* ViewController.swift in Sources */,
 				F94BCFA21D55A5FE00ABABC6 /* AppDelegate.swift in Sources */,
@@ -275,6 +285,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F9F4B3081D5D520800838DF5 /* EditUIViewController.swift in Sources */,
+				F9F4B3021D5D466800838DF5 /* EditCursor.swift in Sources */,
 				F94BCFB71D55A5FF00ABABC6 /* MatrixBuddyTests.swift in Sources */,
 				F9F4B2FF1D5C39E000838DF5 /* Computation.swift in Sources */,
 			);
