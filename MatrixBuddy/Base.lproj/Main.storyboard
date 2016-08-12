@@ -92,7 +92,7 @@
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="voy-7J-aJY">
                                         <rect key="frame" x="450" y="0.0" width="150" height="44"/>
-                                        <state key="normal" title="Identity"/>
+                                        <state key="normal" title="Result"/>
                                     </button>
                                 </subviews>
                                 <constraints>

@@ -116,8 +116,8 @@
 				F94BCFAA1D55A5FE00ABABC6 /* LaunchScreen.storyboard */,
 				F94BCFAD1D55A5FE00ABABC6 /* Info.plist */,
 				F9F4B2FD1D5C39E000838DF5 /* Computation.swift */,
-				F9F4B3001D5D466800838DF5 /* EditCursor.swift */,
 				F9F4B3061D5D520800838DF5 /* EditUIViewController.swift */,
+				F9F4B3001D5D466800838DF5 /* EditCursor.swift */,
 			);
 			path = MatrixBuddy;
 			sourceTree = "<group>";
