@@ -23,15 +23,22 @@
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0Sm-z6-qxS">
                                         <rect key="frame" x="0.0" y="0.0" width="150" height="44"/>
                                         <state key="normal" title="Clear"/>
+                                        <connections>
+                                            <action selector="pressClear:" destination="BYZ-38-t0r" eventType="touchUpInside" id="fKf-UV-duQ"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nba-Z3-i9L">
                                         <rect key="frame" x="150" y="0.0" width="150" height="44"/>
                                         <state key="normal" title="Delete"/>
+                                        <connections>
+                                            <action selector="pressDelete:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Vhj-mR-RCJ"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9eJ-4T-yl6">
                                         <rect key="frame" x="300" y="0.0" width="150" height="44"/>
                                         <state key="normal" title="New"/>
                                         <connections>
+                                            <action selector="pressNew:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Xd4-g0-i69"/>
                                             <segue destination="877-oT-MEZ" kind="presentation" id="l0t-2w-JoN"/>
                                         </connections>
                                     </button>
@@ -80,19 +87,31 @@
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NQ8-9F-Pg4">
                                         <rect key="frame" x="0.0" y="0.0" width="150" height="44"/>
                                         <state key="normal" title="Det"/>
+                                        <connections>
+                                            <action selector="pressDet:" destination="BYZ-38-t0r" eventType="touchUpInside" id="YS7-Q8-Fqz"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BQJ-Yp-s10">
                                         <rect key="frame" x="150" y="0.0" width="150" height="44"/>
                                         <state key="normal" title="Trace"/>
+                                        <connections>
+                                            <action selector="pressTrace:" destination="BYZ-38-t0r" eventType="touchUpInside" id="cp8-Xc-wtR"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2YB-Al-rdI">
                                         <rect key="frame" x="300" y="0.0" width="150" height="44"/>
                                         <color key="backgroundColor" red="1" green="0.86944257715445017" blue="0.37854525897501035" alpha="1" colorSpace="calibratedRGB"/>
                                         <state key="normal" title="Negate"/>
+                                        <connections>
+                                            <action selector="pressNegate:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Lx5-BV-5Ja"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="voy-7J-aJY">
                                         <rect key="frame" x="450" y="0.0" width="150" height="44"/>
                                         <state key="normal" title="Result"/>
+                                        <connections>
+                                            <action selector="pressResult:" destination="BYZ-38-t0r" eventType="touchUpInside" id="cg9-Mg-FAS"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <constraints>
@@ -130,19 +149,31 @@
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="u1L-rE-eOF">
                                         <rect key="frame" x="0.0" y="0.0" width="150" height="44"/>
                                         <state key="normal" title="Rel"/>
+                                        <connections>
+                                            <action selector="pressRel:" destination="BYZ-38-t0r" eventType="touchUpInside" id="HRd-zc-bJg"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="o7e-SB-AJo">
                                         <rect key="frame" x="150" y="0.0" width="150" height="44"/>
                                         <color key="backgroundColor" red="0.52296729011366849" green="1" blue="0.21178812410263836" alpha="1" colorSpace="calibratedRGB"/>
                                         <state key="normal" title="Tran"/>
+                                        <connections>
+                                            <action selector="pressTran:" destination="BYZ-38-t0r" eventType="touchUpInside" id="yiY-2y-VwM"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="61j-r7-z0o">
                                         <rect key="frame" x="300" y="0.0" width="150" height="44"/>
                                         <state key="normal" title="Inverse"/>
+                                        <connections>
+                                            <action selector="pressInverse:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Fod-0P-E2V"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="keA-F9-tBJ">
                                         <rect key="frame" x="450" y="0.0" width="150" height="44"/>
                                         <state key="normal" title="Rank"/>
+                                        <connections>
+                                            <action selector="pressRank:" destination="BYZ-38-t0r" eventType="touchUpInside" id="rIS-Nl-1SB"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <constraints>
@@ -183,18 +214,30 @@
                                         <color key="backgroundColor" red="0.50876607621407666" green="0.57532524265633811" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         <inset key="contentEdgeInsets" minX="0.0" minY="5" maxX="0.0" maxY="0.0"/>
                                         <state key="normal" title="+"/>
+                                        <connections>
+                                            <action selector="pressAdd:" destination="BYZ-38-t0r" eventType="touchUpInside" id="zcY-aO-uhX"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WhY-If-baj">
                                         <rect key="frame" x="150" y="0.0" width="150" height="44"/>
                                         <state key="normal" title="-"/>
+                                        <connections>
+                                            <action selector="pressSubtract:" destination="BYZ-38-t0r" eventType="touchUpInside" id="mZD-cN-AKK"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="j3G-fL-gWH">
                                         <rect key="frame" x="300" y="0.0" width="150" height="44"/>
                                         <state key="normal" title="x"/>
+                                        <connections>
+                                            <action selector="pressMultiply:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Mfs-Qj-pPi"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lTV-Gw-vIh">
                                         <rect key="frame" x="450" y="0.0" width="150" height="44"/>
                                         <state key="normal" title="x Scalar"/>
+                                        <connections>
+                                            <action selector="pressScalarMultiply:" destination="BYZ-38-t0r" eventType="touchUpInside" id="r8d-y5-jzI"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <constraints>
@@ -267,7 +310,7 @@
             </objects>
             <point key="canvasLocation" x="-138" y="229"/>
         </scene>
-        <!--Editing Mode-->
+        <!--Edit Mode-->
         <scene sceneID="sVK-4d-eWS">
             <objects>
                 <viewController id="ZYY-iX-pvF" customClass="EditUIViewController" customModule="MatrixBuddy" customModuleProvider="target" sceneMemberID="viewController">
@@ -775,7 +818,7 @@
                             </mask>
                         </variation>
                     </view>
-                    <navigationItem key="navigationItem" title="Editing Mode" id="mNz-rd-xDV">
+                    <navigationItem key="navigationItem" title="Edit Mode" id="mNz-rd-xDV">
                         <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="qDR-D5-Tgn"/>
                         <barButtonItem key="rightBarButtonItem" systemItem="save" id="KxV-ZI-khk"/>
                     </navigationItem>

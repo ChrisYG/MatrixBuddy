@@ -12,6 +12,18 @@ import Darwin
 
 class ViewController: UIViewController {
     
+    
+    var computationList:[Computation]! = [Computation(headOperation:nil, middleOperation:nil, firstMatrix:nil, secondMatrix:nil, result:nil)]
+    
+    //pointer to the last edited section, assit delete button to function properly
+    enum Section {
+        case headOperation
+        case middleOperation
+        case firstMatrix
+        case secondMatrix
+    }
+    var lastEditedSection = Section.firstMatrix
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
@@ -22,7 +34,180 @@ class ViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    //middle operations
+    @IBAction func pressAdd(sender: UIButton) {
+        if computationList.last?.headOperation == nil {
+            computationList.last?.middleOperation = "+"
+        } else {
+            computationList.last?.middleOperation = "+"
+            computationList.last?.headOperation = nil
+        }
+        lastEditedSection = .middleOperation
+    }
+    @IBAction func pressSubtract(sender: UIButton) {
+        if computationList.last?.headOperation == nil {
+            computationList.last?.middleOperation = "-"
+        } else {
+            computationList.last?.middleOperation = "-"
+            computationList.last?.headOperation = nil
+        }
+        lastEditedSection = .middleOperation
+    }
+    @IBAction func pressMultiply(sender: UIButton) {
+        if computationList.last?.headOperation == nil {
+            computationList.last?.middleOperation = "x"
+        } else {
+            computationList.last?.middleOperation = "x"
+            computationList.last?.headOperation = nil
+        }
+        lastEditedSection = .middleOperation
+    }
+    @IBAction func pressScalarMultiply(sender: UIButton) {
+        if computationList.last?.headOperation == nil {
+            computationList.last?.middleOperation = "x scalar"
+        } else {
+            computationList.last?.middleOperation = "x scalar"
+            computationList.last?.headOperation = nil
+        }
+        lastEditedSection = .middleOperation
+    }
+    
+    //head operations
+    @IBAction func pressRel(sender: UIButton) {
+        if computationList.last?.secondMatrix == nil {
+            if computationList.last?.middleOperation == nil {
+                computationList.last?.headOperation = "rel"
+            } else {
+                computationList.last?.headOperation = "rel"
+                computationList.last?.middleOperation = nil
+            }
+            lastEditedSection = .headOperation
+        }
+    }
+    @IBAction func pressTran(sender: UIButton) {
+        if computationList.last?.secondMatrix == nil {
+            if computationList.last?.middleOperation == nil {
+                computationList.last?.headOperation = "tran"
+            } else {
+                computationList.last?.headOperation = "tran"
+                computationList.last?.middleOperation = nil
+            }
+            lastEditedSection = .headOperation
+        }
+
+    }
+    @IBAction func pressInverse(sender: UIButton) {
+        if computationList.last?.secondMatrix == nil {
+            if computationList.last?.middleOperation == nil {
+                computationList.last?.headOperation = "inverse"
+            } else {
+                computationList.last?.headOperation = "inverse"
+                computationList.last?.middleOperation = nil
+            }
+            lastEditedSection = .headOperation
+        }
+    }
+    @IBAction func pressRank(sender: UIButton) {
+        if computationList.last?.secondMatrix == nil {
+            if computationList.last?.middleOperation == nil {
+                computationList.last?.headOperation = "rank"
+            } else {
+                computationList.last?.headOperation = "rank"
+                computationList.last?.middleOperation = nil
+            }
+            lastEditedSection = .headOperation
+        }
+    }
+    @IBAction func pressDet(sender: UIButton) {
+        if computationList.last?.secondMatrix == nil {
+            if computationList.last?.middleOperation == nil {
+                computationList.last?.headOperation = "det"
+            } else {
+                computationList.last?.headOperation = "det"
+                computationList.last?.middleOperation = nil
+            }
+            lastEditedSection = .headOperation
+        }
+    }
+    @IBAction func pressTrace(sender: UIButton) {
+        if computationList.last?.secondMatrix == nil {
+            if computationList.last?.middleOperation == nil {
+                computationList.last?.headOperation = "trace"
+            } else {
+                computationList.last?.headOperation = "trace"
+                computationList.last?.middleOperation = nil
+            }
+            lastEditedSection = .headOperation
+        }
+    }
+    @IBAction func pressNegate(sender: UIButton) {
+        if computationList.last?.secondMatrix == nil {
+            if computationList.last?.middleOperation == nil {
+                computationList.last?.headOperation = "negate"
+            } else {
+                computationList.last?.headOperation = "negate"
+                computationList.last?.middleOperation = nil
+            }
+            lastEditedSection = .headOperation
+        }
+    }
+    
+    //general function buttons
+    @IBAction func pressClear(sender: UIButton) {
+        lastEditedSection = .firstMatrix
+        computationList.last?.headOperation = nil
+        computationList.last?.firstMatrix = nil
+        computationList.last?.middleOperation = nil
+        computationList.last?.secondMatrix = nil
+    }
+    
+    @IBAction func pressDelete(sender: UIButton) {
+        switch lastEditedSection {
+        case .headOperation:
+            computationList.last?.headOperation = nil
+        case .firstMatrix:
+            computationList.last?.firstMatrix = nil
+        case .middleOperation:
+            computationList.last?.middleOperation = nil
+        case .secondMatrix:
+            computationList.last?.secondMatrix = nil
+        }
+    }
+    @IBAction func pressNew(sender: UIButton) {
+        if computationList.last?.firstMatrix == nil {
+            computationList.last?.firstMatrix = [["0","0","0"],["0","0","0"],["0","0","0"]]
+            lastEditedSection = .firstMatrix
+        } else if computationList.last?.headOperation == nil {
+            computationList.last?.secondMatrix = [["0","0","0"],["0","0","0"],["0","0","0"]]
+            lastEditedSection = .secondMatrix
+        }
+    }
+    
+    @IBAction func pressResult(sender: UIButton) {
+        if computationList.last?.middleOperation != nil && computationList.last?.firstMatrix != nil && computationList.last?.secondMatrix != nil {
+            
+        } else if computationList.last?.headOperation != nil && computationList.last?.firstMatrix != nil {
+            
+        }
+    }
+    
+    
+    
+    
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 //0.Equal Fraction matrices

@@ -10,7 +10,7 @@ import UIKit
 
 class EditUIViewController: UIViewController {
     
-    var computation = Computation(headOperation: nil, middleOperation: nil, firstMatrix: [["0","0","0"],["0","0","0"],["0","0","0"]],secondMatrix: [], matrixResult: nil, numberResult: nil)
+    var computation = Computation(headOperation: nil, middleOperation: nil, firstMatrix: [["0","0","0"],["0","0","0"],["0","0","0"]],secondMatrix: nil, result: nil)
 
     var cursor:EditCursor = EditCursor(inMatrixOne: true, verticalIndex: 0, horizontalIndex: 0)
     
@@ -45,7 +45,7 @@ class EditUIViewController: UIViewController {
     
     @IBAction func cursorDown(sender: UIButton) {
         if cursor.inMatrixOne == true {
-            if cursor.verticalIndex < (computation.firstMatrix.count) - 1 {
+            if cursor.verticalIndex < (computation.firstMatrix!.count) - 1 {
                 cursor.moveDown()
             }
         } else {
@@ -63,7 +63,7 @@ class EditUIViewController: UIViewController {
         } else {
             if cursor.horizontalIndex > 0 {
                 cursor.moveLeft()
-            } else if cursor.verticalIndex <= (computation.firstMatrix.count) - 1 {
+            } else if cursor.verticalIndex <= (computation.firstMatrix!.count) - 1 {
                 cursor.moveToFirstMatrix()
             }
         }
@@ -74,9 +74,9 @@ class EditUIViewController: UIViewController {
         if cursor.inMatrixOne == false {
             cursor.moveRight()
         } else if computation.secondMatrix != nil {
-            if cursor.horizontalIndex < (computation.firstMatrix[0].count) - 1 {
+            if cursor.horizontalIndex < (computation.firstMatrix![0].count) - 1 {
                 cursor.moveRight()
-            } else if cursor.horizontalIndex == (computation.firstMatrix[0].count) - 1 {
+            } else if cursor.horizontalIndex == (computation.firstMatrix![0].count) - 1 {
                 if cursor.verticalIndex <= (computation.secondMatrix!.count) - 1 {
                     cursor.moveToSecondMatirx()
                 }
@@ -128,9 +128,9 @@ class EditUIViewController: UIViewController {
     //0-9 number buttons
     @IBAction func pressZero(sender: UIButton) {
         if cursor.inMatrixOne == true {
-            let target = computation.firstMatrix[cursor.verticalIndex][cursor.horizontalIndex]
+            let target = computation.firstMatrix![cursor.verticalIndex][cursor.horizontalIndex]
             if target != "0" && (!(target.hasSuffix("/"))){
-                computation.firstMatrix[cursor.verticalIndex][cursor.horizontalIndex] += "0"
+                computation.firstMatrix![cursor.verticalIndex][cursor.horizontalIndex] += "0"
             }
         } else {
             let target = computation.secondMatrix![cursor.verticalIndex][cursor.horizontalIndex]
@@ -141,10 +141,10 @@ class EditUIViewController: UIViewController {
     }
     @IBAction func pressOne(sender: UIButton) {
         if cursor.inMatrixOne == true {
-            if computation.firstMatrix[cursor.verticalIndex][cursor.horizontalIndex] == "0" {
-                computation.firstMatrix[cursor.verticalIndex][cursor.horizontalIndex] = "1"
+            if computation.firstMatrix![cursor.verticalIndex][cursor.horizontalIndex] == "0" {
+                computation.firstMatrix![cursor.verticalIndex][cursor.horizontalIndex] = "1"
             } else {
-                computation.firstMatrix[cursor.verticalIndex][cursor.horizontalIndex] += "1"
+                computation.firstMatrix![cursor.verticalIndex][cursor.horizontalIndex] += "1"
             }
         } else {
             if computation.secondMatrix![cursor.verticalIndex][cursor.horizontalIndex] == "0" {
@@ -156,10 +156,10 @@ class EditUIViewController: UIViewController {
     }
     @IBAction func pressTwo(sender: UIButton) {
         if cursor.inMatrixOne == true {
-            if computation.firstMatrix[cursor.verticalIndex][cursor.horizontalIndex] == "0" {
-                computation.firstMatrix[cursor.verticalIndex][cursor.horizontalIndex] = "2"
+            if computation.firstMatrix![cursor.verticalIndex][cursor.horizontalIndex] == "0" {
+                computation.firstMatrix![cursor.verticalIndex][cursor.horizontalIndex] = "2"
             } else {
-                computation.firstMatrix[cursor.verticalIndex][cursor.horizontalIndex] += "2"
+                computation.firstMatrix![cursor.verticalIndex][cursor.horizontalIndex] += "2"
             }
         } else {
             if computation.secondMatrix![cursor.verticalIndex][cursor.horizontalIndex] == "0" {
@@ -171,10 +171,10 @@ class EditUIViewController: UIViewController {
     }
     @IBAction func pressThree(sender: UIButton) {
         if cursor.inMatrixOne == true {
-            if computation.firstMatrix[cursor.verticalIndex][cursor.horizontalIndex] == "0" {
-                computation.firstMatrix[cursor.verticalIndex][cursor.horizontalIndex] = "3"
+            if computation.firstMatrix![cursor.verticalIndex][cursor.horizontalIndex] == "0" {
+                computation.firstMatrix![cursor.verticalIndex][cursor.horizontalIndex] = "3"
             } else {
-                computation.firstMatrix[cursor.verticalIndex][cursor.horizontalIndex] += "3"
+                computation.firstMatrix![cursor.verticalIndex][cursor.horizontalIndex] += "3"
             }
         } else {
             if computation.secondMatrix![cursor.verticalIndex][cursor.horizontalIndex] == "0" {
@@ -186,10 +186,10 @@ class EditUIViewController: UIViewController {
     }
     @IBAction func pressFour(sender: UIButton) {
         if cursor.inMatrixOne == true {
-            if computation.firstMatrix[cursor.verticalIndex][cursor.horizontalIndex] == "0" {
-                computation.firstMatrix[cursor.verticalIndex][cursor.horizontalIndex] = "4"
+            if computation.firstMatrix![cursor.verticalIndex][cursor.horizontalIndex] == "0" {
+                computation.firstMatrix![cursor.verticalIndex][cursor.horizontalIndex] = "4"
             } else {
-                computation.firstMatrix[cursor.verticalIndex][cursor.horizontalIndex] += "4"
+                computation.firstMatrix![cursor.verticalIndex][cursor.horizontalIndex] += "4"
             }
         } else {
             if computation.secondMatrix![cursor.verticalIndex][cursor.horizontalIndex] == "0" {
@@ -201,10 +201,10 @@ class EditUIViewController: UIViewController {
     }
     @IBAction func pressFive(sender: UIButton) {
         if cursor.inMatrixOne == true {
-            if computation.firstMatrix[cursor.verticalIndex][cursor.horizontalIndex] == "0" {
-                computation.firstMatrix[cursor.verticalIndex][cursor.horizontalIndex] = "5"
+            if computation.firstMatrix![cursor.verticalIndex][cursor.horizontalIndex] == "0" {
+                computation.firstMatrix![cursor.verticalIndex][cursor.horizontalIndex] = "5"
             } else {
-                computation.firstMatrix[cursor.verticalIndex][cursor.horizontalIndex] += "5"
+                computation.firstMatrix![cursor.verticalIndex][cursor.horizontalIndex] += "5"
             }
         } else {
             if computation.secondMatrix![cursor.verticalIndex][cursor.horizontalIndex] == "0" {
@@ -216,10 +216,10 @@ class EditUIViewController: UIViewController {
     }
     @IBAction func pressSix(sender: UIButton) {
         if cursor.inMatrixOne == true {
-            if computation.firstMatrix[cursor.verticalIndex][cursor.horizontalIndex] == "0" {
-                computation.firstMatrix[cursor.verticalIndex][cursor.horizontalIndex] = "6"
+            if computation.firstMatrix![cursor.verticalIndex][cursor.horizontalIndex] == "0" {
+                computation.firstMatrix![cursor.verticalIndex][cursor.horizontalIndex] = "6"
             } else {
-                computation.firstMatrix[cursor.verticalIndex][cursor.horizontalIndex] += "6"
+                computation.firstMatrix![cursor.verticalIndex][cursor.horizontalIndex] += "6"
             }
         } else {
             if computation.secondMatrix![cursor.verticalIndex][cursor.horizontalIndex] == "0" {
@@ -231,10 +231,10 @@ class EditUIViewController: UIViewController {
     }
     @IBAction func pressSeven(sender: UIButton) {
         if cursor.inMatrixOne == true {
-            if computation.firstMatrix[cursor.verticalIndex][cursor.horizontalIndex] == "0" {
-                computation.firstMatrix[cursor.verticalIndex][cursor.horizontalIndex] = "7"
+            if computation.firstMatrix![cursor.verticalIndex][cursor.horizontalIndex] == "0" {
+                computation.firstMatrix![cursor.verticalIndex][cursor.horizontalIndex] = "7"
             } else {
-                computation.firstMatrix[cursor.verticalIndex][cursor.horizontalIndex] += "7"
+                computation.firstMatrix![cursor.verticalIndex][cursor.horizontalIndex] += "7"
             }
         } else {
             if computation.secondMatrix![cursor.verticalIndex][cursor.horizontalIndex] == "0" {
@@ -246,10 +246,10 @@ class EditUIViewController: UIViewController {
     }
     @IBAction func pressEight(sender: UIButton) {
         if cursor.inMatrixOne == true {
-            if computation.firstMatrix[cursor.verticalIndex][cursor.horizontalIndex] == "0" {
-                computation.firstMatrix[cursor.verticalIndex][cursor.horizontalIndex] = "8"
+            if computation.firstMatrix![cursor.verticalIndex][cursor.horizontalIndex] == "0" {
+                computation.firstMatrix![cursor.verticalIndex][cursor.horizontalIndex] = "8"
             } else {
-                computation.firstMatrix[cursor.verticalIndex][cursor.horizontalIndex] += "8"
+                computation.firstMatrix![cursor.verticalIndex][cursor.horizontalIndex] += "8"
             }
         } else {
             if computation.secondMatrix![cursor.verticalIndex][cursor.horizontalIndex] == "0" {
@@ -261,10 +261,10 @@ class EditUIViewController: UIViewController {
     }
     @IBAction func pressNine(sender: UIButton) {
         if cursor.inMatrixOne == true {
-            if computation.firstMatrix[cursor.verticalIndex][cursor.horizontalIndex] == "0" {
-                computation.firstMatrix[cursor.verticalIndex][cursor.horizontalIndex] = "9"
+            if computation.firstMatrix![cursor.verticalIndex][cursor.horizontalIndex] == "0" {
+                computation.firstMatrix![cursor.verticalIndex][cursor.horizontalIndex] = "9"
             } else {
-                computation.firstMatrix[cursor.verticalIndex][cursor.horizontalIndex] += "9"
+                computation.firstMatrix![cursor.verticalIndex][cursor.horizontalIndex] += "9"
             }
         } else {
             if computation.secondMatrix![cursor.verticalIndex][cursor.horizontalIndex] == "0" {
@@ -278,14 +278,14 @@ class EditUIViewController: UIViewController {
     //negative sign button
     @IBAction func pressNegative(sender: UIButton) {
         if cursor.inMatrixOne == true {
-            let target = computation.firstMatrix[cursor.verticalIndex][cursor.horizontalIndex]
+            let target = computation.firstMatrix![cursor.verticalIndex][cursor.horizontalIndex]
             if target == "0" {
-                computation.firstMatrix[cursor.verticalIndex][cursor.horizontalIndex] = "-"
+                computation.firstMatrix![cursor.verticalIndex][cursor.horizontalIndex] = "-"
             } else {
                 if target.characters.contains("-") {
-                    computation.firstMatrix[cursor.verticalIndex][cursor.horizontalIndex] = target.substringFromIndex(target.startIndex.advancedBy(1))
+                    computation.firstMatrix![cursor.verticalIndex][cursor.horizontalIndex] = target.substringFromIndex(target.startIndex.advancedBy(1))
                 } else {
-                    computation.firstMatrix[cursor.verticalIndex][cursor.horizontalIndex] = "-" + target
+                    computation.firstMatrix![cursor.verticalIndex][cursor.horizontalIndex] = "-" + target
                 }
             }
         } else {
@@ -306,9 +306,9 @@ class EditUIViewController: UIViewController {
     //decimal sign button
     @IBAction func pressDecimal(sender: UIButton) {
         if cursor.inMatrixOne == true {
-            let target = computation.firstMatrix[cursor.verticalIndex][cursor.horizontalIndex]
+            let target = computation.firstMatrix![cursor.verticalIndex][cursor.horizontalIndex]
             if !(target.characters.contains("/") || target.characters.contains(".")){
-                computation.firstMatrix[cursor.verticalIndex][cursor.horizontalIndex] +=  "."
+                computation.firstMatrix![cursor.verticalIndex][cursor.horizontalIndex] +=  "."
             }
         } else {
             let target = computation.secondMatrix![cursor.verticalIndex][cursor.horizontalIndex]
@@ -321,9 +321,9 @@ class EditUIViewController: UIViewController {
     //fraction sign button
     @IBAction func pressFractionSign(sender: UIButton) {
         if cursor.inMatrixOne == true {
-            let target = computation.firstMatrix[cursor.verticalIndex][cursor.horizontalIndex]
+            let target = computation.firstMatrix![cursor.verticalIndex][cursor.horizontalIndex]
             if !(target == "0" || target.characters.contains("/") || target.characters.contains(".")) {
-                computation.firstMatrix[cursor.verticalIndex][cursor.horizontalIndex] += "/"
+                computation.firstMatrix![cursor.verticalIndex][cursor.horizontalIndex] += "/"
             }
         } else {
             let target = computation.secondMatrix![cursor.verticalIndex][cursor.horizontalIndex]
@@ -336,12 +336,12 @@ class EditUIViewController: UIViewController {
     //delete button
     @IBAction func pressDelete(sender: UIButton) {
         if cursor.inMatrixOne == true {
-            let target = computation.firstMatrix[cursor.verticalIndex][cursor.horizontalIndex]
+            let target = computation.firstMatrix![cursor.verticalIndex][cursor.horizontalIndex]
             if target.characters.count > 1{
-                computation.firstMatrix[cursor.verticalIndex][cursor.horizontalIndex] =
+                computation.firstMatrix![cursor.verticalIndex][cursor.horizontalIndex] =
                 target.substringToIndex(target.endIndex.advancedBy(-1))
             } else if target != "0" {
-                computation.firstMatrix[cursor.verticalIndex][cursor.horizontalIndex] = "0"
+                computation.firstMatrix![cursor.verticalIndex][cursor.horizontalIndex] = "0"
             }
         } else {
             let target = computation.secondMatrix![cursor.verticalIndex][cursor.horizontalIndex]
