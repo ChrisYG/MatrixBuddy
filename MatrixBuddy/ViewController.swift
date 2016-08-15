@@ -69,6 +69,7 @@ class ViewController: UIViewController {
             computationList.last?.middleOperation = "x scalar"
             computationList.last?.headOperation = nil
         }
+        computationList.last?.secondMatrix = [["1"]]
         lastEditedSection = .middleOperation
     }
     
@@ -161,6 +162,7 @@ class ViewController: UIViewController {
         computationList.last?.secondMatrix = nil
     }
     
+    //need revision for stack
     @IBAction func pressDelete(sender: UIButton) {
         switch lastEditedSection {
         case .headOperation:
@@ -185,10 +187,40 @@ class ViewController: UIViewController {
     
     @IBAction func pressResult(sender: UIButton) {
         if computationList.last?.middleOperation != nil && computationList.last?.firstMatrix != nil && computationList.last?.secondMatrix != nil {
-            
+            let firstFractionMatrix = stringMatrixToFractionMatrix((computationList.last?.firstMatrix)!)
+            let secondFractionMatrix = stringMatrixToFractionMatrix((computationList.last?.secondMatrix)!)
+            if computationList.last?.middleOperation == "+" {
+                computationList.last?.result = matrixToString(addMatrices(firstFractionMatrix, matrix2: secondFractionMatrix)!)
+            } else if computationList.last?.middleOperation == "-" {
+                computationList.last?.result = matrixToString(subtractMatrices(firstFractionMatrix, matrix2: secondFractionMatrix)!)
+            } else if computationList.last?.middleOperation == "x" {
+                computationList.last?.result = matrixToString(multMatrices(firstFractionMatrix, matrix2: secondFractionMatrix)!)
+            } else {
+                computationList.last?.result = matrixToString(scalarMult(firstFractionMatrix, constant: secondFractionMatrix[0][0]))
+            }
         } else if computationList.last?.headOperation != nil && computationList.last?.firstMatrix != nil {
-            
+            let fractionMatrix = stringMatrixToFractionMatrix((computationList.last?.firstMatrix)!)
+            if computationList.last?.headOperation == "rel" {
+                computationList.last?.result = matrixToString(ghaussian(fractionMatrix).matrix)
+            } else if computationList.last?.headOperation == "tran" {
+                computationList.last?.result = matrixToString(transpose(fractionMatrix))
+            } else if computationList.last?.headOperation == "inverse" {
+                computationList.last?.result = matrixToString(inverse(fractionMatrix)!)
+            } else if computationList.last?.headOperation == "rank" {
+                computationList.last?.result = matrixToString([[intToFraction(rank(fractionMatrix))]])
+            } else if computationList.last?.headOperation == "det" {
+                computationList.last?.result = matrixToString([[determinant(fractionMatrix)!]])
+            } else if computationList.last?.headOperation == "trace" {
+                computationList.last?.result = matrixToString([[trace(fractionMatrix)!]])
+            } else {
+                computationList.last?.result = matrixToString(negate(fractionMatrix))
+            }
         }
+        
+        //codes to update the entire computation to the table view
+        
+        
+        computationList.append(Computation(headOperation: nil, middleOperation: nil, firstMatrix: nil, secondMatrix: nil, result: nil))
     }
     
     
@@ -712,6 +744,31 @@ func doubleToFraction(input:Double) -> Fraction {
 //15. Convert an int to a fraction
 func intToFraction(input:Int) -> Fraction {
     return Fraction(numerator:input, denominator: 1)
+}
+
+//16. Convert a string to a fraction
+func stringToFraction(input:String) -> Fraction {
+    if input.characters.contains("/") {
+        let numerator = input.substringToIndex(input.characters.indexOf("/")!)
+        let denominator = input.substringFromIndex(input.characters.indexOf("/")!.advancedBy(1))
+        let(num, denom) = reduce(numerator: Int(numerator)!, denominator: Int(denominator)!)
+        return Fraction(numerator: num, denominator: denom)
+    } else {
+        return doubleToFraction(Double(input)!)
+    }
+}
+
+//17. Convert a matrix of strings to a matrix of Fractions
+func stringMatrixToFractionMatrix(input:[[String]]) -> [[Fraction]] {
+    var result:[[Fraction]] = []
+    for x in 0..<input.count {
+        var temp:[Fraction] = []
+        for y in 0..<input[0].count {
+            temp.append(stringToFraction(input[x][y]))
+        }
+        result.append(temp)
+    }
+    return result
 }
 
 
