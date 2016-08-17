@@ -9,18 +9,81 @@
 import UIKit
 import Darwin
 
+extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource {
+    func collectionView(collectionView: UICollectionView,
+                        numberOfItemsInSection section: Int) -> Int {
+        
+        return computations.count
+    }
+    
+    func collectionView(collectionView: UICollectionView,
+                        cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
+        
+        let cell = collectionView.dequeueReusableCellWithReuseIdentifier("Cell",
+                                                                         forIndexPath: indexPath)
+        
+        //cell.backgroundColor = computations[collectionView.tag][indexPath.item]
+        
+        return cell
+    }
+}
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, UITableViewDataSource {
+    
+    @IBOutlet weak var tableView: UITableView!
+    
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        self.tableView.registerClass(MatrixTableViewCell.self, forCellReuseIdentifier: "matrixCell")
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+    // Configure it somewhere later
+    var computations:[Computation] = []
+
+    
+    func tableView(tableView: UITableView,
+                     cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCellWithIdentifier("matrixCell", forIndexPath:indexPath)
+        // Configure the cell based on computation variable
+        let compVar:Computation = computations[indexPath.row]
+        if let matrixCell = cell as? MatrixTableViewCell {
+            matrixCell.firstOp.text = compVar.headOperation
+            matrixCell.secondOp.text = compVar.middleOperation
+            var matrixRows: [UILabel] = []
+            // Setting each row of the matrix as UILabel
+            for row in 0...compVar.firstMatrix.count {
+                let newRow: UILabel = UILabel.init()
+                var rowString = ""
+                for col in 0...compVar.firstMatrix[row].count {
+                    rowString.appendContentsOf(compVar.firstMatrix[row][col])
+                    if col != compVar.firstMatrix[row].count - 1 {
+                        rowString.appendContentsOf(" ")
+                    }
+                }
+                newRow.text = rowString
+                matrixRows.append(newRow)
+            }
+            matrixCell.firstMatrix = UIStackView.init(arrangedSubviews: matrixRows)
+        }
+        // TODO: 2nd and 3rd matrices
+        
+        return cell
+    }
+    
+    func tableView(tableView: UITableView,
+                   numberOfRowsInSection section: Int) -> Int {
+        return computations.count
+    }
+    
+    
     
 }
 
