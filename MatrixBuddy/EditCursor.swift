@@ -22,11 +22,11 @@ class EditCursor {
     }
     
     func moveUp(){
-        self.verticalIndex += 1
+        self.verticalIndex -= 1
     }
     
     func moveDown(){
-        self.verticalIndex -= 1
+        self.verticalIndex += 1
         
     }
     
@@ -40,13 +40,13 @@ class EditCursor {
     
     func moveToSecondMatirx(){
         self.inMatrixOne = false
-        self.firstMatrixLength = self.horizontalIndex
+        self.firstMatrixLength = self.horizontalIndex + 1
         self.horizontalIndex = 0
     }
     
     func moveToFirstMatrix(){
         self.inMatrixOne = true
-        self.horizontalIndex = self.firstMatrixLength
+        self.horizontalIndex = self.firstMatrixLength - 1
     }
     
     func reset(){

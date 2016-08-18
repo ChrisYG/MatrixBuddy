@@ -26,12 +26,33 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        editButton.enabled = false
         // Do any additional setup after loading the view, typically from a nib.
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    @IBOutlet weak var editButton: UIButton!
+    
+    //unwind segue
+    @IBAction func unwindToOperations(sender: UIStoryboardSegue) {
+        if let sourceViewController = sender.sourceViewController as? EditUIViewController {
+            computationList.last?.firstMatrix = sourceViewController.computation.firstMatrix
+            computationList.last?.secondMatrix = sourceViewController.computation.secondMatrix
+            print(computationList.last?.firstMatrix)
+            print(computationList.last?.secondMatrix)
+        }
+    }
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.destinationViewController.childViewControllers.first is EditUIViewController {
+            let dest = segue.destinationViewController.childViewControllers.first as! EditUIViewController
+            dest.computation.firstMatrix = computationList.last?.firstMatrix
+            dest.computation.secondMatrix = computationList.last?.secondMatrix
+        }
+        
     }
     
     //middle operations
@@ -99,6 +120,10 @@ class ViewController: UIViewController {
             operationStack.removeAtIndex(operationStack.indexOf(.middleOperation)!)
         }
         operationStack.append(.middleOperation)
+        if operationStack.contains(.secondMatrix) {
+            operationStack.removeAtIndex(operationStack.indexOf(.secondMatrix)!)
+        }
+        operationStack.append(.secondMatrix)
         
         print(computationList.last?.headOperation)
         print(computationList.last?.middleOperation)
@@ -277,6 +302,7 @@ class ViewController: UIViewController {
         computationList.last?.firstMatrix = nil
         computationList.last?.middleOperation = nil
         computationList.last?.secondMatrix = nil
+        editButton.enabled = false
     }
     
     
@@ -285,12 +311,17 @@ class ViewController: UIViewController {
             let lastOperation = operationStack.removeLast()
             if lastOperation == .headOperation {
                 computationList.last?.headOperation = nil
+                print(computationList.last?.headOperation)
             } else if lastOperation == .firstMatrix {
                 computationList.last?.firstMatrix = nil
+                editButton.enabled = false
+                print(computationList.last?.firstMatrix)
             } else if lastOperation == .middleOperation {
                 computationList.last?.middleOperation = nil
+                print(computationList.last?.middleOperation)
             } else {
                 computationList.last?.secondMatrix = nil
+                print(computationList.last?.secondMatrix)
             }
         }
     }
@@ -298,18 +329,24 @@ class ViewController: UIViewController {
     @IBAction func pressNew(sender: UIButton) {
         if computationList.last?.firstMatrix == nil {
             computationList.last?.firstMatrix = [["0","0","0"],["0","0","0"],["0","0","0"]]
+            editButton.enabled = true
+            print(computationList.last?.firstMatrix)
+            print(computationList.last?.secondMatrix)
             if operationStack.contains(.firstMatrix) {
                 operationStack.removeAtIndex(operationStack.indexOf(.firstMatrix)!)
             }
             operationStack.append(.firstMatrix)
-        } else if computationList.last?.headOperation == nil {
+        } else if computationList.last?.headOperation == nil && computationList.last?.secondMatrix == nil {
             computationList.last?.secondMatrix = [["0","0","0"],["0","0","0"],["0","0","0"]]
+            print(computationList.last?.firstMatrix)
+            print(computationList.last?.secondMatrix)
             if operationStack.contains(.secondMatrix) {
                 operationStack.removeAtIndex(operationStack.indexOf(.secondMatrix)!)
             }
             operationStack.append(.secondMatrix)
         }
     }
+    
     
     
     @IBAction func pressResult(sender: UIButton) {
@@ -322,9 +359,12 @@ class ViewController: UIViewController {
                 computationList.last?.result = matrixToString(subtractMatrices(firstFractionMatrix, matrix2: secondFractionMatrix)!)
             } else if computationList.last?.middleOperation == "x" && firstFractionMatrix[0].count == secondFractionMatrix.count {
                 computationList.last?.result = matrixToString(multMatrices(firstFractionMatrix, matrix2: secondFractionMatrix)!)
-            } else {
+            } else if secondFractionMatrix.count == 1 && secondFractionMatrix[0].count == 1 {
                 computationList.last?.result = matrixToString(scalarMult(firstFractionMatrix, constant: secondFractionMatrix[0][0]))
             }
+            operationStack.removeAll()
+            computationList.append(Computation(headOperation: nil, middleOperation: nil, firstMatrix: nil, secondMatrix: nil, result: nil))
+            editButton.enabled = false
         } else if computationList.last?.headOperation != nil && computationList.last?.firstMatrix != nil {
             let fractionMatrix = stringMatrixToFractionMatrix((computationList.last?.firstMatrix)!)
             if computationList.last?.headOperation == "rel" {
@@ -342,13 +382,16 @@ class ViewController: UIViewController {
             } else {
                 computationList.last?.result = matrixToString(negate(fractionMatrix))
             }
+            operationStack.removeAll()
+            computationList.append(Computation(headOperation: nil, middleOperation: nil, firstMatrix: nil, secondMatrix: nil, result: nil))
+            editButton.enabled = false
         }
        
-        operationStack.removeAll()
+        
         //codes to update the entire computation to the table view
         
         
-        computationList.append(Computation(headOperation: nil, middleOperation: nil, firstMatrix: nil, secondMatrix: nil, result: nil))
+        
     }
     
     
@@ -423,6 +466,9 @@ func toDecimalMatrix(matrix:[[Fraction]]) -> [[Double]] {
 func toString(input: Fraction) -> String {
     guard !input.isNaN else { return "NaN" }
     guard !input.isInfinite else { return (input >= 0 ? "+" : "-") + "Inf" }
+    if input.numerator == 0 {
+        return "0"
+    }
     switch input.denominator {
     case 1: return "\(input.numerator)"
     default: return "\(input.numerator)/\(input.denominator)"
@@ -803,17 +849,17 @@ func scalarMult(matrix:[[Fraction]], constant:Fraction) -> [[Fraction]] {
 //10. Addition and deletion of the last row
 
 //addition of a row
-func addRow(matrix:[[Fraction]]) -> [[Fraction]] {
-    var result:[[Fraction]] = matrix
+func addRow(matrix:[[String]]) -> [[String]] {
+    var result:[[String]] = matrix
     let col = matrix[0].count
-    let newRow = [Fraction](count: col, repeatedValue: 0)
+    let newRow = [String](count: col, repeatedValue: "0")
     result.append(newRow)
     return result
 }
 
 //remove the last row
-func removeRow(matrix:[[Fraction]]) -> [[Fraction]] {
-    var result:[[Fraction]] = matrix
+func removeRow(matrix:[[String]]) -> [[String]] {
+    var result:[[String]] = matrix
     if matrix.count > 1 {
         result.removeLast()
     }
@@ -823,18 +869,18 @@ func removeRow(matrix:[[Fraction]]) -> [[Fraction]] {
 //11. Addition and deletion of the last col
 
 //add a new column to the last
-func addCol(matrix:[[Fraction]]) -> [[Fraction]] {
-    var result:[[Fraction]] = matrix
+func addCol(matrix:[[String]]) -> [[String]] {
+    var result:[[String]] = matrix
     for x in 0..<matrix.count {
-        result[x].append(0)
+        result[x].append("0")
     }
     return result
 }
 
 
 //remove the last col
-func removeCol(matrix:[[Fraction]]) -> [[Fraction]] {
-    var result:[[Fraction]] = matrix
+func removeCol(matrix:[[String]]) -> [[String]] {
+    var result:[[String]] = matrix
     if matrix[0].count > 1 {
         for x in 0..<matrix.count {
             result[x].removeLast()
