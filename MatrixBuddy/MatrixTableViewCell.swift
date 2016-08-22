@@ -12,21 +12,13 @@ class MatrixTableViewCell: UITableViewCell {
     
     @IBOutlet weak var firstOp: UILabel!
     
-    
     @IBOutlet weak var firstMatrix: UIStackView!
     
     @IBOutlet weak var secondOp: UILabel!
     
-    /**
-    func setCollectionViewDataSourceDelegate
-        <D: protocol<UIStackViewDataSource, UIStackViewDelegate>>
-        (dataSourceDelegate: D, forRow row: Int) {
-        
-        firstMatrix.delegate = dataSourceDelegate
-        firstMatrix.dataSource = dataSourceDelegate
-        firstMatrix.tag = row
-        firstMatrix.reloadData()
-    } **/
+    @IBOutlet weak var secondMatrix: UIStackView!
+    
+    @IBOutlet weak var result: UIStackView!
     
     override func awakeFromNib() {
         super.awakeFromNib()

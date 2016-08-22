@@ -13,17 +13,15 @@ class Computation {
     
     var headOperation:String?
     var middleOperation:String?
-    var firstMatrix:[[String]]
+    var firstMatrix:[[String]]?
     var secondMatrix:[[String]]?
-    var matrixResult:[[String]]?
-    var numberResult:Double?
+    var result:[[String]]?
     
-    init(headOperation:String?, middleOperation:String?, firstMatrix:[[String]], secondMatrix:[[String]], matrixResult:[[String]]?, numberResult:Double?) {
+    init(headOperation:String?, middleOperation:String?, firstMatrix:[[String]]?, secondMatrix:[[String]]?, result:[[String]]?) {
         self.headOperation = headOperation
         self.middleOperation = middleOperation
         self.firstMatrix = firstMatrix
         self.secondMatrix = secondMatrix
-        self.matrixResult = matrixResult
-        self.numberResult = numberResult
+        self.result = result
     }
 }

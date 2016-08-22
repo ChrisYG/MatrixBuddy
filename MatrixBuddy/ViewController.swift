@@ -9,25 +9,6 @@
 import UIKit
 import Darwin
 
-extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource {
-    func collectionView(collectionView: UICollectionView,
-                        numberOfItemsInSection section: Int) -> Int {
-        
-        return computations.count
-    }
-    
-    func collectionView(collectionView: UICollectionView,
-                        cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-        
-        let cell = collectionView.dequeueReusableCellWithReuseIdentifier("Cell",
-                                                                         forIndexPath: indexPath)
-        
-        //cell.backgroundColor = computations[collectionView.tag][indexPath.item]
-        
-        return cell
-    }
-}
-
 class ViewController: UIViewController, UITableViewDataSource {
     
     @IBOutlet weak var tableView: UITableView!
@@ -45,43 +26,80 @@ class ViewController: UIViewController, UITableViewDataSource {
         // Dispose of any resources that can be recreated.
     }
     
-    // Configure it somewhere later
-    var computations:[Computation] = []
+    var computationList:[Computation]! = [Computation(headOperation:nil, middleOperation:nil, firstMatrix:nil, secondMatrix:nil, result:nil)]
 
     
     func tableView(tableView: UITableView,
                      cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("matrixCell", forIndexPath:indexPath)
         // Configure the cell based on computation variable
-        let compVar:Computation = computations[indexPath.row]
+        let compVar:Computation = computationList[indexPath.row]
         if let matrixCell = cell as? MatrixTableViewCell {
             matrixCell.firstOp.text = compVar.headOperation
             matrixCell.secondOp.text = compVar.middleOperation
-            var matrixRows: [UILabel] = []
-            // Setting each row of the matrix as UILabel
-            for row in 0...compVar.firstMatrix.count {
-                let newRow: UILabel = UILabel.init()
-                var rowString = ""
-                for col in 0...compVar.firstMatrix[row].count {
-                    rowString.appendContentsOf(compVar.firstMatrix[row][col])
-                    if col != compVar.firstMatrix[row].count - 1 {
-                        rowString.appendContentsOf(" ")
-                    }
-                }
-                newRow.text = rowString
-                matrixRows.append(newRow)
-            }
-            matrixCell.firstMatrix = UIStackView.init(arrangedSubviews: matrixRows)
+            let firstMatrix = compVar.firstMatrix!
+            let secondMatrix = compVar.secondMatrix!
+            let result = compVar.result!
+            
+            matrixCell.firstMatrix = UIStackView.init(arrangedSubviews:
+                convertMatrixToLabelArray(firstMatrix))
+            matrixCell.secondMatrix = UIStackView.init(arrangedSubviews: convertMatrixToLabelArray(secondMatrix))
+            matrixCell.result = UIStackView.init(arrangedSubviews:
+                convertMatrixToLabelArray(result))
         }
         // TODO: 2nd and 3rd matrices
         
         return cell
     }
     
+    // A helper function for alignment
+    func findLongestStrLenInEachCol(matrix: [[String]]) -> [Int] {
+        var longestStringLengthInEachColumn: [Int] = []
+        for col in 0...matrix[0].count {
+            var maxLength = matrix[0][col].characters.count
+            for row in 0...matrix.count {
+                let tempCount = matrix[row][col].characters.count
+                if tempCount > maxLength {
+                    maxLength = tempCount
+                }
+            }
+            longestStringLengthInEachColumn.append(maxLength)
+        }
+        return longestStringLengthInEachColumn
+    }
+    
+    // A helper function for delegate functoin
+    func convertMatrixToLabelArray(matrix: [[String]]) -> [UILabel] {
+        var matrixLabels: [UILabel] = []
+        var longestStringLengthInEachColumn =
+            findLongestStrLenInEachCol(matrix)
+        
+        // Setting each row of the matrix as UILabel
+        for row in 0...matrix.count {
+            let newLabel: UILabel = UILabel.init()
+            var rowString = ""
+            for col in 0...matrix[row].count {
+                rowString.appendContentsOf(matrix[row][col])
+                if col != matrix[row].count - 1 {
+                    // adding spacing offsets
+                    for _ in 0...longestStringLengthInEachColumn[col]+1-matrix[row][col].characters.count {
+                        rowString.appendContentsOf(" ")
+                    }
+                }
+            }
+            newLabel.text = rowString
+            matrixLabels.append(newLabel)
+        }
+        return matrixLabels
+
+    }
+    
     func tableView(tableView: UITableView,
                    numberOfRowsInSection section: Int) -> Int {
-        return computations.count
+        return computationList.count
     }
+    
+    // Call insertRow & ReloadData for updating the table
     
     
     
