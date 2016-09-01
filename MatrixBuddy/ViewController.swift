@@ -26,7 +26,44 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+       
+        editButton.layer.borderWidth = 0.5
+        editButton.layer.borderColor = UIColor.blackColor().CGColor
         editButton.enabled = false
+        
+        addButton.layer.borderWidth = 0.5
+        addButton.layer.borderColor = UIColor.blackColor().CGColor
+        subtractButton.layer.borderWidth = 0.5
+        subtractButton.layer.borderColor = UIColor.blackColor().CGColor
+        multiplyButton.layer.borderWidth = 0.5
+        multiplyButton.layer.borderColor = UIColor.blackColor().CGColor
+        scalarMultiplyButton.layer.borderWidth = 0.5
+        scalarMultiplyButton.layer.borderColor = UIColor.blackColor().CGColor
+        negateButton.layer.borderWidth = 0.5
+        negateButton.layer.borderColor = UIColor.blackColor().CGColor
+        relButton.layer.borderWidth = 0.5
+        relButton.layer.borderColor = UIColor.blackColor().CGColor
+        tranButton.layer.borderWidth = 0.5
+        tranButton.layer.borderColor = UIColor.blackColor().CGColor
+        traceButton.layer.borderWidth = 0.5
+        traceButton.layer.borderColor = UIColor.blackColor().CGColor
+        clearButton.layer.borderWidth = 0.5
+        clearButton.layer.borderColor = UIColor.blackColor().CGColor
+        detButton.layer.borderWidth = 0.5
+        detButton.layer.borderColor = UIColor.blackColor().CGColor
+        inverseButton.layer.borderWidth = 0.5
+        inverseButton.layer.borderColor = UIColor.blackColor().CGColor
+        rankButton.layer.borderWidth = 0.5
+        rankButton.layer.borderColor = UIColor.blackColor().CGColor
+        deleteButton.layer.borderWidth = 0.5
+        deleteButton.layer.borderColor = UIColor.blackColor().CGColor
+        newMatrixButton.layer.borderWidth = 0.5
+        newMatrixButton.layer.borderColor = UIColor.blackColor().CGColor
+        resultButton.layer.borderWidth = 0.5
+        resultButton.layer.borderColor = UIColor.blackColor().CGColor
+        editBoard.layer.borderWidth = 0.5
+        editBoard.layer.borderColor = UIColor.blackColor().CGColor
+        
         // Do any additional setup after loading the view, typically from a nib.
     }
 
@@ -35,17 +72,39 @@ class ViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    //@IBOutlet weak var editButton: UIButton!
     @IBOutlet weak var editButton: UIButton!
+    @IBOutlet weak var addButton: UIButton!
+    @IBOutlet weak var subtractButton: UIButton!
+    @IBOutlet weak var multiplyButton: UIButton!
+    @IBOutlet weak var scalarMultiplyButton: UIButton!
+    @IBOutlet weak var negateButton: UIButton!
+    @IBOutlet weak var relButton: UIButton!
+    @IBOutlet weak var tranButton: UIButton!
+    @IBOutlet weak var traceButton: UIButton!
+    @IBOutlet weak var clearButton: UIButton!
+    @IBOutlet weak var detButton: UIButton!
+    @IBOutlet weak var inverseButton: UIButton!
+    @IBOutlet weak var rankButton: UIButton!
+    @IBOutlet weak var deleteButton: UIButton!
+    @IBOutlet weak var newMatrixButton: UIButton!
+    @IBOutlet weak var resultButton: UIButton!
+    @IBOutlet weak var editBoard: UIView!
     
     //unwind segue
     @IBAction func unwindToOperations(sender: UIStoryboardSegue) {
         if let sourceViewController = sender.sourceViewController as? EditUIViewController {
-            computationList.last?.firstMatrix = sourceViewController.computation.firstMatrix
-            computationList.last?.secondMatrix = sourceViewController.computation.secondMatrix
+            computationList.last?.firstMatrix = checkSafety(sourceViewController.computation.firstMatrix!)
+            if computationList.last?.secondMatrix != nil {
+                computationList.last?.secondMatrix = checkSafety(sourceViewController.computation.secondMatrix!)
+            }
+            
             print(computationList.last?.firstMatrix)
             print(computationList.last?.secondMatrix)
         }
     }
+    
+    //pass data from operation mode to edit mode
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.destinationViewController.childViewControllers.first is EditUIViewController {
             let dest = segue.destinationViewController.childViewControllers.first as! EditUIViewController
@@ -56,6 +115,9 @@ class ViewController: UIViewController {
     }
     
     //middle operations
+//    @IBAction func pressAdd(sender: UIButton) {
+
+//    }
     @IBAction func pressAdd(sender: UIButton) {
         if computationList.last?.headOperation == nil {
             computationList.last?.middleOperation = "+"
@@ -65,7 +127,7 @@ class ViewController: UIViewController {
             operationStack.removeAtIndex(operationStack.indexOf(.headOperation)!)
         }
         if operationStack.contains(.middleOperation) {
-           operationStack.removeAtIndex(operationStack.indexOf(.middleOperation)!)
+            operationStack.removeAtIndex(operationStack.indexOf(.middleOperation)!)
         }
         operationStack.append(.middleOperation)
         
@@ -73,6 +135,8 @@ class ViewController: UIViewController {
         print(computationList.last?.middleOperation)
         
     }
+//    @IBAction func pressSubtract(sender: UIButton) {
+//    }
     @IBAction func pressSubtract(sender: UIButton) {
         if computationList.last?.headOperation == nil {
             computationList.last?.middleOperation = "-"
@@ -88,7 +152,10 @@ class ViewController: UIViewController {
         
         print(computationList.last?.headOperation)
         print(computationList.last?.middleOperation)
+
     }
+//    @IBAction func pressMultiply(sender: UIButton) {
+//    }
     @IBAction func pressMultiply(sender: UIButton) {
         if computationList.last?.headOperation == nil {
             computationList.last?.middleOperation = "x"
@@ -104,9 +171,12 @@ class ViewController: UIViewController {
         
         print(computationList.last?.headOperation)
         print(computationList.last?.middleOperation)
+
     }
-    
-    //!!!codes to address second matrix issue
+//
+//    //!!!codes to address second matrix issue
+//    @IBAction func pressScalarMultiply(sender: UIButton) {
+//    }
     @IBAction func pressScalarMultiply(sender: UIButton) {
         if computationList.last?.headOperation == nil {
             computationList.last?.middleOperation = "x scalar"
@@ -127,9 +197,12 @@ class ViewController: UIViewController {
         
         print(computationList.last?.headOperation)
         print(computationList.last?.middleOperation)
+
     }
-    
-    //head operations
+//
+//    //head operations
+//    @IBAction func pressRel(sender: UIButton) {
+//    }
     @IBAction func pressRel(sender: UIButton) {
         if computationList.last?.secondMatrix != nil {
             if (computationList.last?.secondMatrix?.count)! == 1 && (computationList.last?.secondMatrix)![0].count == 1 {
@@ -152,7 +225,11 @@ class ViewController: UIViewController {
             print(computationList.last?.headOperation)
             print(computationList.last?.middleOperation)
         }
+
     }
+//    @IBAction func pressTran(sender: UIButton) {
+//
+//    }
     @IBAction func pressTran(sender: UIButton) {
         if computationList.last?.secondMatrix != nil {
             if (computationList.last?.secondMatrix?.count)! == 1 && (computationList.last?.secondMatrix)![0].count == 1 {
@@ -177,6 +254,8 @@ class ViewController: UIViewController {
         }
 
     }
+//    @IBAction func pressInverse(sender: UIButton) {
+//    }
     @IBAction func pressInverse(sender: UIButton) {
         if computationList.last?.secondMatrix != nil {
             if (computationList.last?.secondMatrix?.count)! == 1 && (computationList.last?.secondMatrix)![0].count == 1 {
@@ -199,7 +278,10 @@ class ViewController: UIViewController {
             print(computationList.last?.headOperation)
             print(computationList.last?.middleOperation)
         }
+
     }
+//    @IBAction func pressRank(sender: UIButton) {
+//    }
     @IBAction func pressRank(sender: UIButton) {
         if computationList.last?.secondMatrix != nil {
             if (computationList.last?.secondMatrix?.count)! == 1 && (computationList.last?.secondMatrix)![0].count == 1 {
@@ -222,7 +304,10 @@ class ViewController: UIViewController {
             print(computationList.last?.headOperation)
             print(computationList.last?.middleOperation)
         }
+
     }
+//    @IBAction func pressDet(sender: UIButton) {
+//    }
     @IBAction func pressDet(sender: UIButton) {
         if computationList.last?.secondMatrix != nil {
             if (computationList.last?.secondMatrix?.count)! == 1 && (computationList.last?.secondMatrix)![0].count == 1 {
@@ -245,7 +330,10 @@ class ViewController: UIViewController {
             print(computationList.last?.headOperation)
             print(computationList.last?.middleOperation)
         }
+
     }
+//    @IBAction func pressTrace(sender: UIButton) {
+//    }
     @IBAction func pressTrace(sender: UIButton) {
         if computationList.last?.secondMatrix != nil {
             if (computationList.last?.secondMatrix?.count)! == 1 && (computationList.last?.secondMatrix)![0].count == 1 {
@@ -268,7 +356,10 @@ class ViewController: UIViewController {
             print(computationList.last?.headOperation)
             print(computationList.last?.middleOperation)
         }
+
     }
+//    @IBAction func pressNegate(sender: UIButton) {
+//    }
     @IBAction func pressNegate(sender: UIButton) {
         if computationList.last?.secondMatrix != nil {
             if (computationList.last?.secondMatrix?.count)! == 1 && (computationList.last?.secondMatrix)![0].count == 1 {
@@ -291,9 +382,13 @@ class ViewController: UIViewController {
             print(computationList.last?.headOperation)
             print(computationList.last?.middleOperation)
         }
+
     }
-    
-    //general function buttons
+//
+//    //general function buttons
+//    @IBAction func pressClear(sender: UIButton) {
+//    }
+//    
     @IBAction func pressClear(sender: UIButton) {
         if !operationStack.isEmpty {
             operationStack.removeAll()
@@ -303,9 +398,11 @@ class ViewController: UIViewController {
         computationList.last?.middleOperation = nil
         computationList.last?.secondMatrix = nil
         editButton.enabled = false
+
     }
-    
-    
+//
+//    @IBAction func pressDelete(sender: UIButton) {
+//    }
     @IBAction func pressDelete(sender: UIButton) {
         if !operationStack.isEmpty {
             let lastOperation = operationStack.removeLast()
@@ -324,8 +421,11 @@ class ViewController: UIViewController {
                 print(computationList.last?.secondMatrix)
             }
         }
+
     }
-    
+//
+//    @IBAction func pressNew(sender: UIButton) {
+//    }
     @IBAction func pressNew(sender: UIButton) {
         if computationList.last?.firstMatrix == nil {
             computationList.last?.firstMatrix = [["0","0","0"],["0","0","0"],["0","0","0"]]
@@ -345,10 +445,12 @@ class ViewController: UIViewController {
             }
             operationStack.append(.secondMatrix)
         }
+
     }
-    
-    
-    
+//
+//    
+//    
+//    @IBAction func pressResult(sender: UIButton) {
     @IBAction func pressResult(sender: UIButton) {
         if computationList.last?.middleOperation != nil && computationList.last?.firstMatrix != nil && computationList.last?.secondMatrix != nil {
             let firstFractionMatrix = stringMatrixToFractionMatrix((computationList.last?.firstMatrix)!)
@@ -363,6 +465,7 @@ class ViewController: UIViewController {
                 computationList.last?.result = matrixToString(scalarMult(firstFractionMatrix, constant: secondFractionMatrix[0][0]))
             }
             operationStack.removeAll()
+            print(computationList.last?.result)
             computationList.append(Computation(headOperation: nil, middleOperation: nil, firstMatrix: nil, secondMatrix: nil, result: nil))
             editButton.enabled = false
         } else if computationList.last?.headOperation != nil && computationList.last?.firstMatrix != nil {
@@ -383,15 +486,19 @@ class ViewController: UIViewController {
                 computationList.last?.result = matrixToString(negate(fractionMatrix))
             }
             operationStack.removeAll()
+            print(computationList.last?.result)
             computationList.append(Computation(headOperation: nil, middleOperation: nil, firstMatrix: nil, secondMatrix: nil, result: nil))
             editButton.enabled = false
         }
-       
+        
         
         //codes to update the entire computation to the table view
         
         
         
+    
+
+    
     }
     
     
@@ -941,6 +1048,19 @@ func stringMatrixToFractionMatrix(input:[[String]]) -> [[Fraction]] {
             temp.append(stringToFraction(input[x][y]))
         }
         result.append(temp)
+    }
+    return result
+}
+
+//18. perform satety check on matrix
+func checkSafety(input:[[String]]) -> [[String]] {
+    var result:[[String]] = input
+    for x in 0..<input.count {
+        for y in 0..<input[0].count {
+            if input[x][y].hasSuffix("/") || input[x][y].hasSuffix(".") {
+                result[x][y] = input[x][y].substringToIndex(input[x][y].characters.endIndex.advancedBy(-1))
+            }
+        }
     }
     return result
 }
