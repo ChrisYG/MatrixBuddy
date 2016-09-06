@@ -11,47 +11,74 @@ import UIKit
 
 class EditCursor {
     var inMatrixOne:Bool
-    var verticalIndex:Int
-    var horizontalIndex:Int
-    var firstMatrixLength:Int = 0
+    var verticalIndexOne:Int
+    var horizontalIndexOne:Int
+    var verticalIndexTwo:Int?
+    var horizontalIndexTwo:Int?
     
     init(inMatrixOne:Bool, verticalIndex:Int, horizontalIndex:Int) {
         self.inMatrixOne = inMatrixOne
-        self.verticalIndex = verticalIndex
-        self.horizontalIndex = horizontalIndex
+        self.verticalIndexOne = verticalIndex
+        self.horizontalIndexOne = horizontalIndex
     }
     
     func moveUp(){
-        self.verticalIndex -= 1
+        if self.inMatrixOne == true {
+            self.verticalIndexOne -= 1
+        } else {
+            self.verticalIndexTwo! -= 1
+        }
     }
     
     func moveDown(){
-        self.verticalIndex += 1
-        
+        if self.inMatrixOne == true {
+            self.verticalIndexOne += 1
+        } else {
+            self.verticalIndexTwo! += 1
+        }
     }
     
     func moveLeft(){
-        self.horizontalIndex -= 1
+        if self.inMatrixOne == true {
+            self.horizontalIndexOne -= 1
+        } else {
+            self.horizontalIndexTwo! -= 1
+        }
     }
     
     func moveRight(){
-        self.horizontalIndex += 1
+        if self.inMatrixOne == true {
+            self.horizontalIndexOne += 1
+        } else {
+            self.horizontalIndexTwo! += 1
+        }
     }
     
     func moveToSecondMatirx(){
         self.inMatrixOne = false
-        self.firstMatrixLength = self.horizontalIndex + 1
-        self.horizontalIndex = 0
+        
     }
     
     func moveToFirstMatrix(){
         self.inMatrixOne = true
-        self.horizontalIndex = self.firstMatrixLength - 1
+        
     }
     
     func reset(){
+        if self.inMatrixOne == true {
+            self.horizontalIndexOne = 0
+            self.verticalIndexTwo = 0
+        } else {
+            self.horizontalIndexTwo = 0
+            self.horizontalIndexOne = 0
+        }
+    }
+    
+    func resetAll() {
         self.inMatrixOne = true
-        self.verticalIndex = 0
-        self.horizontalIndex = 0
+        self.horizontalIndexOne = 0
+        self.horizontalIndexTwo = 0
+        self.verticalIndexOne = 0
+        self.verticalIndexTwo = 0
     }
 }

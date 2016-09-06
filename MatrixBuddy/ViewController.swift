@@ -110,6 +110,7 @@ class ViewController: UIViewController {
             let dest = segue.destinationViewController.childViewControllers.first as! EditUIViewController
             dest.computation.firstMatrix = computationList.last?.firstMatrix
             dest.computation.secondMatrix = computationList.last?.secondMatrix
+            dest.computation.middleOperation = computationList.last?.middleOperation
         }
         
     }
