@@ -13,6 +13,13 @@ class EditUIViewController: UIViewController {
     
     var cursor:EditCursor = EditCursor(inMatrixOne: true, verticalIndex: 0, horizontalIndex: 0)
     
+    // Matrix row display references
+    
+    @IBOutlet weak var row1: UILabel!
+    @IBOutlet weak var row2: UILabel!
+    @IBOutlet weak var row3: UILabel!
+    @IBOutlet weak var row4: UILabel!
+    @IBOutlet weak var row5: UILabel!
     
     //Row and Col labels and steppers reference
     @IBOutlet weak var rowLabel: UILabel!
@@ -58,12 +65,65 @@ class EditUIViewController: UIViewController {
     @IBAction func cancel(sender: UIBarButtonItem) {
         dismissViewControllerAnimated(true, completion: nil)
     }
-   
+    // A helper function for alignment
+    func findLongestStrLenInEachCol(matrix: [[String]]) -> [Int] {
+        var longestStringLengthInEachColumn: [Int] = []
+        for col in 0...matrix[0].count-1 {
+            var maxLength = matrix[0][col].characters.count
+            for row in 0...matrix.count-1 {
+                let tempCount = matrix[row][col].characters.count
+                if tempCount > maxLength {
+                    maxLength = tempCount
+                }
+            }
+            longestStringLengthInEachColumn.append(maxLength)
+        }
+        return longestStringLengthInEachColumn
+    }
+    
+    // A helper function for delegate functoin
+    func convertMatrixToLabelArray(matrix: [[String]]) -> [UILabel] {
+        var matrixLabels: [UILabel] = []
+        var longestStringLengthInEachColumn =
+            findLongestStrLenInEachCol(matrix)
+        
+        // Setting each row of the matrix as UILabel
+        for row in 0...matrix.count-1 {
+            let newLabel: UILabel = UILabel.init()
+            var rowString = ""
+            for col in 0...matrix[row].count-1 {
+                rowString.appendContentsOf(matrix[row][col])
+                if col != matrix[row].count - 1 {
+                    // adding spacing offsets
+                    for _ in 0...longestStringLengthInEachColumn[col]-matrix[row][col].characters.count {
+                        rowString.appendContentsOf(" ")
+                    }
+                }
+            }
+            newLabel.text = rowString
+            matrixLabels.append(newLabel)
+        }
+        return matrixLabels
+        
+    }
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
         print(computation.firstMatrix)
         // Do any additional setup after loading the view, typically from a nib.
+        
+        //Setting up matrix
+        let labels = convertMatrixToLabelArray(computation.firstMatrix!)
+        let rows = [row1, row2, row3, row4, row5]
+        for i in 0...labels.count-1 {
+            rows[i].text = labels[i].text
+        }
+        // Problematic?
+        for i in labels.count...4 {
+            rows[i].text = ""
+        }
+        
         cursor.resetAll()
         if computation.secondMatrix == nil {
             pageControl.numberOfPages = 1

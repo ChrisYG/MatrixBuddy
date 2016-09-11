@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8F722D131D85DC67007300F2 /* MatrixTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F722D121D85DC67007300F2 /* MatrixTableViewCell.swift */; };
 		F94BCFA21D55A5FE00ABABC6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F94BCFA11D55A5FE00ABABC6 /* AppDelegate.swift */; };
 		F94BCFA41D55A5FE00ABABC6 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F94BCFA31D55A5FE00ABABC6 /* ViewController.swift */; };
 		F94BCFA71D55A5FE00ABABC6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F94BCFA51D55A5FE00ABABC6 /* Main.storyboard */; };
@@ -41,6 +42,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		8F722D121D85DC67007300F2 /* MatrixTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MatrixTableViewCell.swift; sourceTree = "<group>"; };
 		F94BCF9E1D55A5FE00ABABC6 /* MatrixBuddy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MatrixBuddy.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F94BCFA11D55A5FE00ABABC6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F94BCFA31D55A5FE00ABABC6 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -112,6 +114,7 @@
 				F94BCFA31D55A5FE00ABABC6 /* ViewController.swift */,
 				F94BCFCF1D55A74A00ABABC6 /* Fraction.swift */,
 				F94BCFA51D55A5FE00ABABC6 /* Main.storyboard */,
+				8F722D121D85DC67007300F2 /* MatrixTableViewCell.swift */,
 				F94BCFA81D55A5FE00ABABC6 /* Assets.xcassets */,
 				F94BCFAA1D55A5FE00ABABC6 /* LaunchScreen.storyboard */,
 				F94BCFAD1D55A5FE00ABABC6 /* Info.plist */,
@@ -273,6 +276,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F9F4B3071D5D520800838DF5 /* EditUIViewController.swift in Sources */,
+				8F722D131D85DC67007300F2 /* MatrixTableViewCell.swift in Sources */,
 				F9F4B3011D5D466800838DF5 /* EditCursor.swift in Sources */,
 				F94BCFD01D55A74A00ABABC6 /* Fraction.swift in Sources */,
 				F94BCFA41D55A5FE00ABABC6 /* ViewController.swift in Sources */,

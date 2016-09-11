@@ -10,8 +10,9 @@ import UIKit
 import Darwin
 
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, UITableViewDataSource {
     
+    @IBOutlet weak var table: UITableView!
     
     var computationList:[Computation]! = [Computation(headOperation:nil, middleOperation:nil, firstMatrix:nil, secondMatrix:nil, result:nil)]
     
@@ -27,6 +28,8 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
        
+        table.dataSource = self
+        
         editButton.layer.borderWidth = 0.5
         editButton.layer.borderColor = UIColor.blackColor().CGColor
         editButton.enabled = false
@@ -72,6 +75,115 @@ class ViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    
+    func tableView(tableView: UITableView,
+                   cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        let cellIdentifier = "matrix"
+        let cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier, forIndexPath:indexPath) as! MatrixTableViewCell
+        // Configure the cell based on computation variable
+        let compVar:Computation = computationList[indexPath.row]
+        print(compVar.firstMatrix)
+        print(compVar.secondMatrix)
+        print(compVar.result)
+        //if let matrixCell = cell as? MatrixTableViewCell {
+        cell.firstOp.text = ""
+        cell.secondOp.text = ""
+        if compVar.headOperation != nil {
+            cell.firstOp.text = compVar.headOperation
+        }
+        if compVar.middleOperation != nil {
+            cell.secondOp.text = compVar.middleOperation
+        }
+        if let firstMatrix = compVar.firstMatrix {
+            let rows = cell.firstMatrix.arrangedSubviews
+            if (rows != []) {
+                for i in 0...rows.count-1 {
+                    // cell.firstMatrix.removeArrangedSubview(rows[i])
+                    rows[i].removeFromSuperview()
+                }
+            }
+            for i in 0...firstMatrix.count-1 {
+                cell.firstMatrix.addArrangedSubview(convertMatrixToLabelArray(firstMatrix)[i])
+            }
+            
+        }
+        if let secondMatrix = compVar.secondMatrix {
+            let rows = cell.secondMatrix.arrangedSubviews
+            if (rows != []) {
+                for i in 0...rows.count-1 {
+                    // cell.firstMatrix.removeArrangedSubview(rows[i])
+                    rows[i].removeFromSuperview()
+                }
+            }
+            for i in 0...secondMatrix.count-1 {
+                cell.secondMatrix.addArrangedSubview(convertMatrixToLabelArray(secondMatrix)[i])
+            }
+        }
+        if let result = compVar.result {
+            let rows = cell.result.arrangedSubviews
+            if (rows != []) {
+                for i in 0...rows.count-1 {
+                    // cell.firstMatrix.removeArrangedSubview(rows[i])
+                    rows[i].removeFromSuperview()
+                }
+            }
+            for i in 0...result.count-1 {
+                cell.result.addArrangedSubview(convertMatrixToLabelArray(result)[i])
+            }
+        }
+        //}
+        
+        return cell
+    }
+    
+    // A helper function for alignment
+    func findLongestStrLenInEachCol(matrix: [[String]]) -> [Int] {
+        var longestStringLengthInEachColumn: [Int] = []
+        for col in 0...matrix[0].count-1 {
+            var maxLength = matrix[0][col].characters.count
+            for row in 0...matrix.count-1 {
+                let tempCount = matrix[row][col].characters.count
+                if tempCount > maxLength {
+                    maxLength = tempCount
+                }
+            }
+            longestStringLengthInEachColumn.append(maxLength)
+        }
+        return longestStringLengthInEachColumn
+    }
+    
+    // A helper function for delegate functoin
+    func convertMatrixToLabelArray(matrix: [[String]]) -> [UILabel] {
+        var matrixLabels: [UILabel] = []
+        var longestStringLengthInEachColumn =
+            findLongestStrLenInEachCol(matrix)
+        
+        // Setting each row of the matrix as UILabel
+        for row in 0...matrix.count-1 {
+            let newLabel: UILabel = UILabel.init()
+            var rowString = ""
+            for col in 0...matrix[row].count-1 {
+                rowString.appendContentsOf(matrix[row][col])
+                if col != matrix[row].count - 1 {
+                    // adding spacing offsets
+                    for _ in 0...longestStringLengthInEachColumn[col]-matrix[row][col].characters.count {
+                        rowString.appendContentsOf(" ")
+                    }
+                }
+            }
+            newLabel.text = rowString
+            matrixLabels.append(newLabel)
+        }
+        return matrixLabels
+        
+    }
+    
+    func tableView(tableView: UITableView,
+                   numberOfRowsInSection section: Int) -> Int {
+        return computationList.count
+    }
+
+    
     //@IBOutlet weak var editButton: UIButton!
     @IBOutlet weak var editButton: UIButton!
     @IBOutlet weak var addButton: UIButton!
@@ -101,6 +213,7 @@ class ViewController: UIViewController {
             
             print(computationList.last?.firstMatrix)
             print(computationList.last?.secondMatrix)
+            table.reloadData()
         }
     }
     
@@ -134,7 +247,7 @@ class ViewController: UIViewController {
         
         print(computationList.last?.headOperation)
         print(computationList.last?.middleOperation)
-        
+        table.reloadData()
     }
 //    @IBAction func pressSubtract(sender: UIButton) {
 //    }
@@ -153,7 +266,7 @@ class ViewController: UIViewController {
         
         print(computationList.last?.headOperation)
         print(computationList.last?.middleOperation)
-
+        table.reloadData()
     }
 //    @IBAction func pressMultiply(sender: UIButton) {
 //    }
@@ -172,7 +285,7 @@ class ViewController: UIViewController {
         
         print(computationList.last?.headOperation)
         print(computationList.last?.middleOperation)
-
+        table.reloadData()
     }
 //
 //    //!!!codes to address second matrix issue
@@ -198,7 +311,7 @@ class ViewController: UIViewController {
         
         print(computationList.last?.headOperation)
         print(computationList.last?.middleOperation)
-
+        table.reloadData()
     }
 //
 //    //head operations
@@ -226,7 +339,7 @@ class ViewController: UIViewController {
             print(computationList.last?.headOperation)
             print(computationList.last?.middleOperation)
         }
-
+        table.reloadData()
     }
 //    @IBAction func pressTran(sender: UIButton) {
 //
@@ -253,7 +366,7 @@ class ViewController: UIViewController {
             print(computationList.last?.headOperation)
             print(computationList.last?.middleOperation)
         }
-
+        table.reloadData()
     }
 //    @IBAction func pressInverse(sender: UIButton) {
 //    }
@@ -279,7 +392,7 @@ class ViewController: UIViewController {
             print(computationList.last?.headOperation)
             print(computationList.last?.middleOperation)
         }
-
+        table.reloadData()
     }
 //    @IBAction func pressRank(sender: UIButton) {
 //    }
@@ -305,7 +418,7 @@ class ViewController: UIViewController {
             print(computationList.last?.headOperation)
             print(computationList.last?.middleOperation)
         }
-
+        table.reloadData()
     }
 //    @IBAction func pressDet(sender: UIButton) {
 //    }
@@ -331,7 +444,7 @@ class ViewController: UIViewController {
             print(computationList.last?.headOperation)
             print(computationList.last?.middleOperation)
         }
-
+        table.reloadData()
     }
 //    @IBAction func pressTrace(sender: UIButton) {
 //    }
@@ -357,7 +470,7 @@ class ViewController: UIViewController {
             print(computationList.last?.headOperation)
             print(computationList.last?.middleOperation)
         }
-
+        table.reloadData()
     }
 //    @IBAction func pressNegate(sender: UIButton) {
 //    }
@@ -383,7 +496,7 @@ class ViewController: UIViewController {
             print(computationList.last?.headOperation)
             print(computationList.last?.middleOperation)
         }
-
+        table.reloadData()
     }
 //
 //    //general function buttons
@@ -399,7 +512,7 @@ class ViewController: UIViewController {
         computationList.last?.middleOperation = nil
         computationList.last?.secondMatrix = nil
         editButton.enabled = false
-
+        table.reloadData()
     }
 //
 //    @IBAction func pressDelete(sender: UIButton) {
@@ -422,7 +535,7 @@ class ViewController: UIViewController {
                 print(computationList.last?.secondMatrix)
             }
         }
-
+        table.reloadData()
     }
 //
 //    @IBAction func pressNew(sender: UIButton) {
@@ -446,7 +559,7 @@ class ViewController: UIViewController {
             }
             operationStack.append(.secondMatrix)
         }
-
+        table.reloadData()
     }
 //
 //    
@@ -494,7 +607,7 @@ class ViewController: UIViewController {
         
         
         //codes to update the entire computation to the table view
-        
+        table.reloadData()
         
         
     
